@@ -1,57 +1,302 @@
 # Slurpy (SLUrm Rest api PYthon client)
+
 Slurpy is a Python client for the [Slurm REST API](https://slurm.schedmd.com/rest.html).
 Slurm is an open-source job scheduler for high performance compute environments.
 Its REST API is a set of HTTP endpoints for submitting, monitoring, and managing compute jobs.
 This Python client is a convenience library for interacting with that API.
 
-## Development
-### Requirements
-* [poetry](https://python-poetry.org/docs/#installation)
-* Docker / compose (via any means... docker, podman, colima etc).
+## Features
 
-### Setup
-```shell
-poetry install
-poetry run pre-commit install
+- ✨ **Multiple API versions** - Support for Slurm REST API v0.0.40, v0.0.41, and v0.0.42
+- 🔐 **JWT Authentication** - Built-in support for Slurm JWT token authentication
+- 🚀 **Async/Await** - Full async/await support using httpx
+- 🐍 **Type Hints** - Complete type annotations for better IDE support
+- 🧪 **Well Tested** - Comprehensive integration tests with real Slurm clusters
+- 📦 **Easy Installation** - Simple pip installation with minimal dependencies
+
+## Installation
+
+```bash
+pip install slurpy
 ```
 
-### Running in dev mode
-This repo includes a docker-compose containerised minimal slurm cluster, for dev work.
-It just runs two containers: a maria DB for slurm job persistence, and a single node of a slurm compute cluster.
-The single node is running the slurm controller, the slurm database daemon, the slurm rest API daemon, and a slurm worker node daemon.
-This can be broken up into multiple containers, so that e.g. the controller, rest server, and workers are all separate "nodes", but it makes the dev env a lot heavier.
-This is all in the `slurm-in-docker/` dir.
-```shell
-docker compose -f slurm-in-docker/docker-compose.yaml up  # starts a single-node slurm cluster and db controller in docker
+## Quick Start
+
+### Basic Usage
+
+```python
+import asyncio
+import slurpy.v0040 as slurpy
+
+async def main():
+    # Configure the client
+    configuration = slurpy.Configuration(
+        host="http://your-slurm-rest-api:6820"
+    )
+    
+    # Set up authentication
+    configuration.api_key['user'] = "your-username"
+    configuration.api_key['token'] = "your-jwt-token"
+    
+    # Create API client
+    async with slurpy.ApiClient(configuration) as client:
+        api = slurpy.SlurmApi(client)
+        
+        # Test connectivity
+        response = await api.get_ping()
+        print(f"Cluster status: {response.to_dict()}")
+        
+        # List all jobs
+        jobs_response = await api.get_jobs()
+        jobs = jobs_response.to_dict()
+        print(f"Found {len(jobs['jobs'])} jobs")
+
+if __name__ == "__main__":
+    asyncio.run(main())
 ```
 
-### Tests
-TODO
+### Environment Variables
 
-Should use `pytest`, and have github actions workflow.
-We should mock the Slurm REST API for most tests.
-We may want a couple of e2e/integration tests that run the dockerized slurm cluster, but not necessarily.
+You can use environment variables for configuration:
 
-### Release to PyPI
-TODO
+```python
+import os
+import slurpy.v0040 as slurpy
 
-Should use `poetry publish`.
+configuration = slurpy.Configuration(
+    host=os.getenv("SLURM_REST_URL", "http://localhost:6820")
+)
 
-### Semi-automatic generation of the client
-IDEA
-* Use [datamodel-code-generator](https://docs.pydantic.dev/latest/integrations/datamodel_code_generator/) to convert the desired Slurm REST API Openapi schema into Pydantic models.
-* Curate the `model.py` into a more pleasant scheme.
-* Probably keep the auto-generated `model.py` files around so that we can git-diff between versions to work out how to update the curated model.  
+configuration.api_key['user'] = os.getenv("SLURM_USER_NAME")
+configuration.api_key['token'] = os.getenv("SLURM_USER_TOKEN")
+```
+
+## API Versions
+
+Slurpy supports multiple Slurm REST API versions:
+
+### v0.0.40
+```python
+import slurpy.v0040 as slurpy
+```
+
+### v0.0.41
+```python
+import slurpy.v0041 as slurpy
+```
+
+### v0.0.42
+```python
+import slurpy.v0042 as slurpy
+```
+
+> **Note:** The API interface is consistent across versions, but some features and response formats may differ. Check the Slurm documentation for version-specific differences.
+
+## Common Operations
+
+### List Jobs
+
+```python
+async def list_jobs():
+    async with slurpy.ApiClient(configuration) as client:
+        api = slurpy.SlurmApi(client)
+        
+        response = await api.get_jobs()
+        jobs = response.to_dict()
+        
+        for job in jobs['jobs']:
+            print(f"Job {job['job_id']}: {job['name']} ({job['job_state']})")
+```
+
+### Submit a Job
+
+```python
+async def submit_job():
+    job_spec = {
+        "script": "#!/bin/bash\\nsleep 60\\necho 'Job completed'",
+        "job": {
+            "name": "my_job",
+            "current_working_directory": "/home/user",
+            "environment": ["PATH=/bin:/usr/bin"],
+            "ntasks": 1,
+            "time_limit": {"set": True, "number": 300},  # 5 minutes
+        }
+    }
+    
+    async with slurpy.ApiClient(configuration) as client:
+        api = slurpy.SlurmApi(client)
+        
+        job_request = slurpy.JobSubmitReq.from_dict(job_spec)
+        response = await api.post_job_submit(job_submit_req=job_request)
+        
+        result = response.to_dict()
+        print(f"Job submitted with ID: {result['job_id']}")
+```
+
+### Get Job Details
+
+```python
+async def get_job(job_id: str):
+    async with slurpy.ApiClient(configuration) as client:
+        api = slurpy.SlurmApi(client)
+        
+        response = await api.get_job(job_id=job_id)
+        job = response.to_dict()
+        
+        print(f"Job {job_id} status: {job['jobs'][0]['job_state']}")
+```
+
+### Cancel a Job
+
+```python
+async def cancel_job(job_id: str):
+    async with slurpy.ApiClient(configuration) as client:
+        api = slurpy.SlurmApi(client)
+        
+        response = await api.delete_job(job_id)
+        print(f"Job {job_id} cancellation requested")
+```
+
+## Error Handling
+
+```python
+from slurpy.v0040.rest import ApiException
+
+async def robust_job_operation():
+    try:
+        async with slurpy.ApiClient(configuration) as client:
+            api = slurpy.SlurmApi(client)
+            response = await api.get_jobs()
+            return response.to_dict()
+            
+    except ApiException as e:
+        print(f"API Error: {e.status} - {e.reason}")
+        print(f"Response body: {e.body}")
+        
+    except Exception as e:
+        print(f"Unexpected error: {e}")
+```
+
+## Configuration Options
+
+### SSL/TLS Configuration
+
+```python
+configuration = slurpy.Configuration(
+    host="https://secure-slurm-api:6820",
+    ssl_ca_cert="/path/to/ca-cert.pem",  # CA certificate
+    cert_file="/path/to/client-cert.pem",  # Client certificate
+    key_file="/path/to/client-key.pem",   # Client private key
+    verify_ssl=True
+)
+```
+
+## Complete Example
+
+```python
+#!/usr/bin/env python3
+import asyncio
+import os
+from typing import Optional
+
+import slurpy.v0040 as slurpy
+from slurpy.v0040.rest import ApiException
 
 
-## Usage
-### As a library
-TODO
+async def slurm_workflow():
+    \"\"\"Complete workflow: ping, submit job, monitor, cleanup.\"\"\"
+    
+    # Configuration
+    configuration = slurpy.Configuration(
+        host=os.getenv("SLURM_REST_URL", "http://localhost:6820")
+    )
+    configuration.api_key['user'] = os.getenv("SLURM_USER_NAME", "slurm")
+    configuration.api_key['token'] = os.getenv("SLURM_USER_TOKEN")
+    
+    if not configuration.api_key['token']:
+        print("Error: SLURM_USER_TOKEN environment variable is required")
+        return
+    
+    job_id: Optional[str] = None
+    
+    try:
+        async with slurpy.ApiClient(configuration) as client:
+            api = slurpy.SlurmApi(client)
+            
+            # 1. Test connectivity
+            print("🔍 Testing cluster connectivity...")
+            ping_response = await api.get_ping()
+            print(f"✅ Cluster is responsive: {ping_response.to_dict()}")
+            
+            # 2. Submit a job
+            print("\\n📤 Submitting job...")
+            job_spec = {
+                "script": "#!/bin/bash\\nsleep 30\\necho 'Hello from Slurm!'",
+                "job": {
+                    "name": "slurpy_demo",
+                    "current_working_directory": "/tmp",
+                    "environment": ["PATH=/bin:/usr/bin"],
+                    "ntasks": 1,
+                    "time_limit": {"set": True, "number": 120},
+                }
+            }
+            
+            job_request = slurpy.JobSubmitReq.from_dict(job_spec)
+            submit_response = await api.post_job_submit(job_submit_req=job_request)
+            result = submit_response.to_dict()
+            job_id = str(result['job_id'])
+            print(f"✅ Job submitted successfully with ID: {job_id}")
+            
+            # 3. Monitor job
+            print(f"\\n👀 Monitoring job {job_id}...")
+            job_response = await api.get_job(job_id=job_id)
+            job_data = job_response.to_dict()
+            job_info = job_data['jobs'][0]
+            print(f"📊 Job status: {job_info['job_state']}")
+            print(f"📋 Job details: {job_info['name']} on {job_info.get('nodes', 'pending')}")
+            
+            # 4. List all current jobs
+            print("\\n📋 Current cluster jobs:")
+            jobs_response = await api.get_jobs()
+            jobs = jobs_response.to_dict()
+            print(f"Found {len(jobs['jobs'])} total jobs in the cluster")
+            
+    except ApiException as e:
+        print(f"❌ Slurm API error: {e.status} - {e.reason}")
+        if e.body:
+            print(f"Response: {e.body}")
+            
+    except Exception as e:
+        print(f"❌ Unexpected error: {e}")
+        
+    finally:
+        # Cleanup: Cancel the job if it was created
+        if job_id:
+            try:
+                async with slurpy.ApiClient(configuration) as client:
+                    api = slurpy.SlurmApi(client)
+                    await api.delete_job(job_id)
+                    print(f"\\n🧹 Cleanup: Job {job_id} cancellation requested")
+            except Exception as cleanup_error:
+                print(f"⚠️ Cleanup warning: Could not cancel job {job_id}: {cleanup_error}")
 
-### As a CLI
-TODO
 
-IDEA: use textual to add a CLI/TUI option for monitoring (and maybe submitting) jobs.
-See [mjobs](https://github.com/mberacochea/mjobs) for inspiration.
-This should be available as an add-on package, e.g. `pip install slurpy[cli]`.
-Use [poetry extras](https://python-poetry.org/docs/pyproject/#extras) for this.
+if __name__ == "__main__":
+    asyncio.run(slurm_workflow())
+```
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+- 📖 **Documentation**: Check the docstrings and type hints
+- 🐛 **Issues**: Report bugs on GitHub Issues
+- 💬 **Discussions**: Ask questions in GitHub Discussions
+- 📧 **Contact**: Reach out to the maintainers
+
+## Related Projects
+
+- [Slurm](https://slurm.schedmd.com/) - The original Slurm Workload Manager
+- [Slurm REST API Documentation](https://slurm.schedmd.com/rest_api.html) - Official REST API docs

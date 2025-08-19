@@ -1,0 +1,42 @@
+---
+services:
+  slurm_db:
+    image: mariadb:latest
+    hostname: slurm_db
+    container_name: slurm_db
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: slurm
+      MYSQL_USER: slurm
+      MYSQL_PASSWORD: slurm
+    volumes:
+      - db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ['CMD', '/usr/local/bin/healthcheck.sh', '--connect']
+      interval: 2s
+      timeout: 2s
+      retries: 5
+
+  slurm_node:
+    # A single node instance of slurm (dbd, controller, worker, restd)
+    build:
+      context: .
+    command: ["slurmd"]
+    hostname: slurm_node
+    container_name: slurm_node
+    depends_on:
+      slurm_db:
+        condition: service_healthy
+    volumes:
+      - munge:/etc/munge
+      - logs:/var/log/slurm
+      - "./entrypoints/entrypoint.sh:/usr/local/bin/entrypoint.sh"
+    ports:
+      - "6820:6820"
+
+volumes:
+  db:
+  munge:
+  logs:
