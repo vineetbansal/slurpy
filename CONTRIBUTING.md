@@ -56,14 +56,32 @@ Thank you for your interest in contributing to Slurpy! This guide will help you 
 slurpy/
 ├── slurpy/                    # Main package
 │   ├── __init__.py
-│   ├── v0040/                 # Generated API client for v0.0.40
-│   ├── v0041/                 # Generated API client for v0.0.41
-│   └── v0042/                 # Generated API client for v0.0.42
+│   ├── v0040/                 # Sync API client for v0.0.40
+│   │   ├── __init__.py           # Sync client exports
+│   │   ├── api/                  # API modules
+│   │   ├── models/               # Model classes
+│   │   └── asyncio/              # Async variant
+│   │       ├── __init__.py       # Async client exports
+│   │       ├── api/              # Async API modules
+│   │       └── models/           # Async model classes
+│   ├── v0041/                 # Sync + async clients for v0.0.41
+│   └── v0042/                 # Sync + async clients for v0.0.42
 ├── tools/                     # Development tools
 │   └── generate_versioned_clients.py  # Client generation script
 ├── tests/                     # Test suite
-│   ├── conftest.py           # Shared test fixtures
+│   ├── conftest.py           # Shared test fixtures (slurm_cluster, sample_job)
 │   └── integration/          # Integration tests
+│       ├── conftest.py       # Integration-wide fixtures
+│       ├── asyncio/          # Async integration tests
+│       │   ├── conftest.py   # Async-specific fixtures
+│       │   ├── test_v0040.py # Async tests for v0.0.40
+│       │   ├── test_v0041.py # Async tests for v0.0.41
+│       │   └── test_v0042.py # Async tests for v0.0.42
+│       └── sync/             # Sync integration tests
+│           ├── conftest.py   # Sync-specific fixtures
+│           ├── test_v0040.py # Sync tests for v0.0.40
+│           ├── test_v0041.py # Sync tests for v0.0.41
+│           └── test_v0042.py # Sync tests for v0.0.42
 ├── slurm/                    # Docker compose setup for testing
 │   ├── docker-compose.yaml   # Slurm cluster for integration tests
 │   └── ...                   # Slurm configuration files
@@ -83,8 +101,9 @@ The main generation tool is located at `tools/generate_versioned_clients.py`. Th
 - Downloads OpenAPI specifications for different Slurm versions
 - Filters and processes the specs
 - Generates Python clients using openapi-generator-cli
-- Creates version-specific packages
-- Sets up clean import structures
+- Creates both **sync and async** variants for each version
+- Sets up clean import structures with proper `__init__.py` files
+- Handles cleanup and prevents file conflicts between sync/async generation
 
 ### Running the Generator
 
@@ -104,11 +123,13 @@ python tools/generate_versioned_clients.py --log-level DEBUG
 
 ### Generator Features
 
+- **Dual client generation**: Creates both sync and async clients for each version
 - **Automatic cleanup**: Removes temporary files and `.openapi-generator` directories
 - **Logging**: Configurable log levels (DEBUG, INFO, WARNING, ERROR)
 - **Filtering**: Processes OpenAPI specs to fix common issues
 - **Version management**: Handles multiple API versions consistently
 - **Bridge imports**: Creates clean `__init__.py` files for easy importing
+- **Conflict prevention**: Generates async clients first, then sync to avoid overwrites
 
 ### Adding New API Versions
 
@@ -130,36 +151,56 @@ To add support for a new Slurm API version:
    ```
 
 4. **Create integration tests**:
-   - Copy an existing test file like `tests/integration/test_v0042.py`
-   - Update the version imports and test class name
-   - Test with a real Slurm cluster
+   - Copy existing test files from `tests/integration/sync/test_v0042.py` and `tests/integration/asyncio/test_v0042.py`
+   - Update the version imports and test class names
+   - Test with a real Slurm cluster for both sync and async variants
 
 ## Testing
 
-Slurpy has integration tests for now. Integration tests require a running Slurm cluster.
+Slurpy has integration tests for both sync and async clients. Integration tests require a running Slurm cluster.
 
 ### Test Structure
 
 - **Integration Tests**: `tests/integration/` (for end-to-end API testing)
-- **Fixtures**: `tests/conftest.py` (shared test setup)
+  - **Sync Tests**: `tests/integration/sync/` (synchronous client tests)
+  - **Async Tests**: `tests/integration/asyncio/` (asynchronous client tests)
+- **Fixtures**: Organized by scope and client type
+  - `tests/conftest.py`: Shared fixtures (Docker cluster, test data)
+  - `tests/integration/sync/conftest.py`: Sync-specific fixtures
+  - `tests/integration/asyncio/conftest.py`: Async-specific fixtures
 
 ### Running Tests
 
 ```bash
-# Run all tests
+# Run all tests (both sync and async)
 poetry run pytest
 
 # Run only integration tests
 poetry run pytest tests/integration/
 
-# Run tests for specific version
-poetry run pytest tests/integration/test_v0040.py
+# Run only sync tests
+poetry run pytest tests/integration/sync/
+
+# Run only async tests
+poetry run pytest tests/integration/asyncio/
+
+# Run tests for specific version (both sync and async)
+poetry run pytest tests/integration/*/test_v0040.py
+
+# Run sync tests for specific version
+poetry run pytest tests/integration/sync/test_v0040.py
+
+# Run async tests for specific version
+poetry run pytest tests/integration/asyncio/test_v0040.py
 
 # Run with verbose output
 poetry run pytest -v
 
-# Run specific test
-poetry run pytest tests/integration/test_v0040.py::TestSlurmV0040::test_ping_cluster
+# Run specific test (sync)
+poetry run pytest tests/integration/sync/test_v0040.py::TestSlurmV0040::test_ping_cluster
+
+# Run specific test (async)
+poetry run pytest tests/integration/asyncio/test_v0040.py::TestSlurmV0040::test_ping_cluster
 ```
 
 ### Integration Test Requirements
@@ -176,9 +217,17 @@ Integration tests use **testcontainers** to spin up a real Slurm cluster:
 
 ### Writing New Tests
 
-When adding new tests:
+When adding new tests, create both sync and async versions:
 
-1. **Use existing patterns**:
+1. **Sync test pattern** (`tests/integration/sync/`):
+   ```python
+   class TestSlurmV0040:
+       def test_new_feature(self, api_client: slurpy.SlurmApi):
+           response = api_client.some_new_method()
+           assert response is not None
+   ```
+
+2. **Async test pattern** (`tests/integration/asyncio/`):
    ```python
    @pytest.mark.asyncio
    class TestSlurmV0040:
@@ -187,12 +236,26 @@ When adding new tests:
            assert response is not None
    ```
 
-2. **Follow test naming conventions**:
+3. **Follow test naming conventions**:
    - Test files: `test_*.py`
    - Test classes: `TestSlurm*`
    - Test methods: `test_*`
 
-3. **Include cleanup in job-related tests**:
+4. **Include cleanup in job-related tests**:
+   
+   **Sync version:**
+   ```python
+   job_id = None
+   try:
+       # Create and test job
+       job_id = submit_job()
+       # ... test logic
+   finally:
+       if job_id:
+           api_client.delete_job(job_id)
+   ```
+   
+   **Async version:**
    ```python
    job_id = None
    try:
@@ -203,6 +266,11 @@ When adding new tests:
        if job_id:
            await api_client.delete_job(job_id)
    ```
+
+5. **Fixture organization**:
+   - Both sync and async tests use fixtures with the same names
+   - Pytest automatically resolves to the correct fixture based on directory
+   - This allows identical test logic between sync and async versions
 
 ## Code Quality
 
@@ -306,8 +374,12 @@ curl -H "X-SLURM-USER-NAME: slurm" \\
 
 3. **Test your changes**:
    ```bash
-   # Run relevant tests
-   poetry run pytest tests/integration/test_v0040.py
+   # Run relevant tests (both sync and async)
+   poetry run pytest tests/integration/*/test_v0040.py
+   
+   # Or run specific client type
+   poetry run pytest tests/integration/sync/test_v0040.py
+   poetry run pytest tests/integration/asyncio/test_v0040.py
    
    # Run linting
    poetry run ruff check
@@ -342,7 +414,12 @@ If you modify the client generation process:
    ```
 3. **Verify the generated clients work**:
    ```bash
+   # Test both sync and async clients
    poetry run pytest tests/integration/
+   
+   # Or test each type separately
+   poetry run pytest tests/integration/sync/
+   poetry run pytest tests/integration/asyncio/
    ```
 
 ## Submitting Contributions

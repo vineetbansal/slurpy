@@ -19,14 +19,14 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_errors_inner import (
-    V0041OpenapiAccountsAddCondRespErrorsInner,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_errors_inner import (
+    V0041OpenapiAccountsRespErrorsInner,
 )
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_meta import (
-    V0041OpenapiAccountsAddCondRespMeta,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_meta import (
+    V0041OpenapiAccountsRespMeta,
 )
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_warnings_inner import (
-    V0041OpenapiAccountsAddCondRespWarningsInner,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_warnings_inner import (
+    V0041OpenapiAccountsRespWarningsInner,
 )
 from slurpy.v0041.models.v0041_openapi_partition_resp_last_update import (
     V0041OpenapiPartitionRespLastUpdate,
@@ -47,11 +47,11 @@ class OpenAPIPartitionResp(BaseModel):
         description="List of partitions"
     )
     last_update: V0041OpenapiPartitionRespLastUpdate
-    meta: Optional[V0041OpenapiAccountsAddCondRespMeta] = None
-    errors: Optional[List[V0041OpenapiAccountsAddCondRespErrorsInner]] = Field(
+    meta: Optional[V0041OpenapiAccountsRespMeta] = None
+    errors: Optional[List[V0041OpenapiAccountsRespErrorsInner]] = Field(
         default=None, description="Query errors"
     )
-    warnings: Optional[List[V0041OpenapiAccountsAddCondRespWarningsInner]] = Field(
+    warnings: Optional[List[V0041OpenapiAccountsRespWarningsInner]] = Field(
         default=None, description="Query warnings"
     )
     __properties: ClassVar[List[str]] = [
@@ -150,17 +150,17 @@ class OpenAPIPartitionResp(BaseModel):
                 )
                 if obj.get("last_update") is not None
                 else None,
-                "meta": V0041OpenapiAccountsAddCondRespMeta.from_dict(obj["meta"])
+                "meta": V0041OpenapiAccountsRespMeta.from_dict(obj["meta"])
                 if obj.get("meta") is not None
                 else None,
                 "errors": [
-                    V0041OpenapiAccountsAddCondRespErrorsInner.from_dict(_item)
+                    V0041OpenapiAccountsRespErrorsInner.from_dict(_item)
                     for _item in obj["errors"]
                 ]
                 if obj.get("errors") is not None
                 else None,
                 "warnings": [
-                    V0041OpenapiAccountsAddCondRespWarningsInner.from_dict(_item)
+                    V0041OpenapiAccountsRespWarningsInner.from_dict(_item)
                     for _item in obj["warnings"]
                 ]
                 if obj.get("warnings") is not None

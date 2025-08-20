@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_clusters_resp_clusters_inner_tres_inner import (
-    V0041OpenapiClustersRespClustersInnerTresInner,
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner,
 )
 from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_grpjobs import (
     V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpjobs,
@@ -72,19 +72,17 @@ class V0041OpenapiUsersAddCondRespAssociationConditionAssociation(BaseModel):
     grpsubmitjobs: Optional[
         V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpsubmitjobs
     ] = None
-    grptres: Optional[List[V0041OpenapiClustersRespClustersInnerTresInner]] = Field(
+    grptres: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
         default=None,
         description="Maximum number of TRES able to be allocated by running jobs in this association and its children",
     )
-    grptresmins: Optional[List[V0041OpenapiClustersRespClustersInnerTresInner]] = Field(
+    grptresmins: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
         default=None,
         description="Total number of TRES minutes that can possibly be used by past, present and future jobs in this association and its children",
     )
-    grptresrunmins: Optional[List[V0041OpenapiClustersRespClustersInnerTresInner]] = (
-        Field(
-            default=None,
-            description="Maximum number of TRES minutes able to be allocated by running jobs in this association and its children",
-        )
+    grptresrunmins: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None,
+        description="Maximum number of TRES minutes able to be allocated by running jobs in this association and its children",
     )
     grpwall: Optional[
         V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpwall
@@ -98,28 +96,20 @@ class V0041OpenapiUsersAddCondRespAssociationConditionAssociation(BaseModel):
     maxsubmitjobs: Optional[
         V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxsubmitjobs
     ] = None
-    maxtresminsperjob: Optional[
-        List[V0041OpenapiClustersRespClustersInnerTresInner]
-    ] = Field(
+    maxtresminsperjob: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
         default=None,
         description="Maximum number of TRES minutes each job is able to use in this association",
     )
-    maxtresrunmins: Optional[List[V0041OpenapiClustersRespClustersInnerTresInner]] = (
-        Field(
-            default=None,
-            description="Maximum number of TRES minutes able to be allocated by running jobs in this association",
-        )
+    maxtresrunmins: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None,
+        description="Maximum number of TRES minutes able to be allocated by running jobs in this association",
     )
-    maxtresperjob: Optional[List[V0041OpenapiClustersRespClustersInnerTresInner]] = (
-        Field(
-            default=None,
-            description="Maximum number of TRES each job is able to use in this association",
-        )
+    maxtresperjob: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None,
+        description="Maximum number of TRES each job is able to use in this association",
     )
-    maxtrespernode: Optional[List[V0041OpenapiClustersRespClustersInnerTresInner]] = (
-        Field(
-            default=None, description="Maximum number of TRES each node is able to use"
-        )
+    maxtrespernode: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="Maximum number of TRES each node is able to use"
     )
     maxwalldurationperjob: Optional[
         V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxwalldurationperjob
@@ -311,19 +301,19 @@ class V0041OpenapiUsersAddCondRespAssociationConditionAssociation(BaseModel):
                 if obj.get("grpsubmitjobs") is not None
                 else None,
                 "grptres": [
-                    V0041OpenapiClustersRespClustersInnerTresInner.from_dict(_item)
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["grptres"]
                 ]
                 if obj.get("grptres") is not None
                 else None,
                 "grptresmins": [
-                    V0041OpenapiClustersRespClustersInnerTresInner.from_dict(_item)
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["grptresmins"]
                 ]
                 if obj.get("grptresmins") is not None
                 else None,
                 "grptresrunmins": [
-                    V0041OpenapiClustersRespClustersInnerTresInner.from_dict(_item)
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["grptresrunmins"]
                 ]
                 if obj.get("grptresrunmins") is not None
@@ -349,25 +339,25 @@ class V0041OpenapiUsersAddCondRespAssociationConditionAssociation(BaseModel):
                 if obj.get("maxsubmitjobs") is not None
                 else None,
                 "maxtresminsperjob": [
-                    V0041OpenapiClustersRespClustersInnerTresInner.from_dict(_item)
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["maxtresminsperjob"]
                 ]
                 if obj.get("maxtresminsperjob") is not None
                 else None,
                 "maxtresrunmins": [
-                    V0041OpenapiClustersRespClustersInnerTresInner.from_dict(_item)
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["maxtresrunmins"]
                 ]
                 if obj.get("maxtresrunmins") is not None
                 else None,
                 "maxtresperjob": [
-                    V0041OpenapiClustersRespClustersInnerTresInner.from_dict(_item)
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["maxtresperjob"]
                 ]
                 if obj.get("maxtresperjob") is not None
                 else None,
                 "maxtrespernode": [
-                    V0041OpenapiClustersRespClustersInnerTresInner.from_dict(_item)
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["maxtrespernode"]
                 ]
                 if obj.get("maxtrespernode") is not None

@@ -17,156 +17,156 @@ import unittest
 from slurpy.v0040.api.slurm_api import SlurmApi
 
 
-class TestSlurmApi(unittest.IsolatedAsyncioTestCase):
+class TestSlurmApi(unittest.TestCase):
     """SlurmApi unit test stubs"""
 
-    async def asyncSetUp(self) -> None:
+    def setUp(self) -> None:
         self.api = SlurmApi()
 
-    async def asyncTearDown(self) -> None:
-        await self.api.api_client.close()
+    def tearDown(self) -> None:
+        pass
 
-    async def test_delete_job(self) -> None:
+    def test_delete_job(self) -> None:
         """Test case for delete_job
 
         cancel or signal job
         """
         pass
 
-    async def test_delete_jobs(self) -> None:
+    def test_delete_jobs(self) -> None:
         """Test case for delete_jobs
 
         send signal to list of jobs
         """
         pass
 
-    async def test_delete_node(self) -> None:
+    def test_delete_node(self) -> None:
         """Test case for delete_node
 
         delete node
         """
         pass
 
-    async def test_get_diag(self) -> None:
+    def test_get_diag(self) -> None:
         """Test case for get_diag
 
         get diagnostics
         """
         pass
 
-    async def test_get_job(self) -> None:
+    def test_get_job(self) -> None:
         """Test case for get_job
 
         get job info
         """
         pass
 
-    async def test_get_jobs(self) -> None:
+    def test_get_jobs(self) -> None:
         """Test case for get_jobs
 
         get list of jobs
         """
         pass
 
-    async def test_get_jobs_state(self) -> None:
+    def test_get_jobs_state(self) -> None:
         """Test case for get_jobs_state
 
         get list of job states
         """
         pass
 
-    async def test_get_licenses(self) -> None:
+    def test_get_licenses(self) -> None:
         """Test case for get_licenses
 
         get all Slurm tracked license info
         """
         pass
 
-    async def test_get_node(self) -> None:
+    def test_get_node(self) -> None:
         """Test case for get_node
 
         get node info
         """
         pass
 
-    async def test_get_nodes(self) -> None:
+    def test_get_nodes(self) -> None:
         """Test case for get_nodes
 
         get node(s) info
         """
         pass
 
-    async def test_get_partition(self) -> None:
+    def test_get_partition(self) -> None:
         """Test case for get_partition
 
         get partition info
         """
         pass
 
-    async def test_get_partitions(self) -> None:
+    def test_get_partitions(self) -> None:
         """Test case for get_partitions
 
         get all partition info
         """
         pass
 
-    async def test_get_ping(self) -> None:
+    def test_get_ping(self) -> None:
         """Test case for get_ping
 
         ping test
         """
         pass
 
-    async def test_get_reconfigure(self) -> None:
+    def test_get_reconfigure(self) -> None:
         """Test case for get_reconfigure
 
         request slurmctld reconfigure
         """
         pass
 
-    async def test_get_reservation(self) -> None:
+    def test_get_reservation(self) -> None:
         """Test case for get_reservation
 
         get reservation info
         """
         pass
 
-    async def test_get_reservations(self) -> None:
+    def test_get_reservations(self) -> None:
         """Test case for get_reservations
 
         get all reservation info
         """
         pass
 
-    async def test_get_shares(self) -> None:
+    def test_get_shares(self) -> None:
         """Test case for get_shares
 
         get fairshare info
         """
         pass
 
-    async def test_post_job(self) -> None:
+    def test_post_job(self) -> None:
         """Test case for post_job
 
         update job
         """
         pass
 
-    async def test_post_job_submit(self) -> None:
+    def test_post_job_submit(self) -> None:
         """Test case for post_job_submit
 
         submit new job
         """
         pass
 
-    async def test_post_node(self) -> None:
+    def test_post_node(self) -> None:
         """Test case for post_node
 
         update node properties
         """
         pass
 
-    async def test_post_nodes(self) -> None:
+    def test_post_nodes(self) -> None:
         """Test case for post_nodes
 
         batch update node(s)

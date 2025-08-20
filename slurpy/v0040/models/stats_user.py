@@ -19,7 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0040.models.v0040_stats_user_time import V0040StatsUserTime
+from slurpy.v0040.models.v0040_stats_rpc_time import V0040StatsRpcTime
 from typing import Set
 from typing_extensions import Self
 
@@ -33,7 +33,7 @@ class StatsUser(BaseModel):
     count: Optional[StrictInt] = Field(
         default=None, description="Number of RPCs processed"
     )
-    time: Optional[V0040StatsUserTime] = None
+    time: Optional[V0040StatsRpcTime] = None
     __properties: ClassVar[List[str]] = ["user", "count", "time"]
 
     model_config = ConfigDict(
@@ -91,7 +91,7 @@ class StatsUser(BaseModel):
             {
                 "user": obj.get("user"),
                 "count": obj.get("count"),
-                "time": V0040StatsUserTime.from_dict(obj["time"])
+                "time": V0040StatsRpcTime.from_dict(obj["time"])
                 if obj.get("time") is not None
                 else None,
             }

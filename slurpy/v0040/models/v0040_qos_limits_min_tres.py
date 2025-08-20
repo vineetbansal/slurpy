@@ -19,9 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0040.models.v0040_assoc_max_tres_minutes_per import (
-    V0040AssocMaxTresMinutesPer,
-)
+from slurpy.v0040.models.v0040_qos_limits_min_tres_per import V0040QosLimitsMinTresPer
 from typing import Set
 from typing_extensions import Self
 
@@ -31,7 +29,7 @@ class V0040QosLimitsMinTres(BaseModel):
     V0040QosLimitsMinTres
     """  # noqa: E501
 
-    per: Optional[V0040AssocMaxTresMinutesPer] = None
+    per: Optional[V0040QosLimitsMinTresPer] = None
     __properties: ClassVar[List[str]] = ["per"]
 
     model_config = ConfigDict(
@@ -87,7 +85,7 @@ class V0040QosLimitsMinTres(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "per": V0040AssocMaxTresMinutesPer.from_dict(obj["per"])
+                "per": V0040QosLimitsMinTresPer.from_dict(obj["per"])
                 if obj.get("per") is not None
                 else None
             }

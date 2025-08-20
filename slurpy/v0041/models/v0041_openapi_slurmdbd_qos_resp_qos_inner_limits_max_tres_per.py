@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grptres_inner import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner,
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -31,18 +31,18 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTresPer(BaseModel):
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTresPer
     """  # noqa: E501
 
-    account: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="MaxTRESPerAccount")
-    job: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="MaxTRESPerJob")
-    node: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="MaxTRESPerNode")
-    user: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="MaxTRESPerUser")
+    account: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="MaxTRESPerAccount"
+    )
+    job: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="MaxTRESPerJob"
+    )
+    node: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="MaxTRESPerNode"
+    )
+    user: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="MaxTRESPerUser"
+    )
     __properties: ClassVar[List[str]] = ["account", "job", "node", "user"]
 
     model_config = ConfigDict(
@@ -124,33 +124,25 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTresPer(BaseModel):
         _obj = cls.model_validate(
             {
                 "account": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["account"]
                 ]
                 if obj.get("account") is not None
                 else None,
                 "job": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["job"]
                 ]
                 if obj.get("job") is not None
                 else None,
                 "node": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["node"]
                 ]
                 if obj.get("node") is not None
                 else None,
                 "user": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["user"]
                 ]
                 if obj.get("user") is not None

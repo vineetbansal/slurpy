@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grptres_inner import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner,
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -31,12 +31,12 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerTres(BaseModel):
     V0041OpenapiSlurmdbdJobsRespJobsInnerTres
     """  # noqa: E501
 
-    allocated: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="Trackable resources allocated to the job")
-    requested: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="Trackable resources requested by job")
+    allocated: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="Trackable resources allocated to the job"
+    )
+    requested: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="Trackable resources requested by job"
+    )
     __properties: ClassVar[List[str]] = ["allocated", "requested"]
 
     model_config = ConfigDict(
@@ -104,17 +104,13 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerTres(BaseModel):
         _obj = cls.model_validate(
             {
                 "allocated": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["allocated"]
                 ]
                 if obj.get("allocated") is not None
                 else None,
                 "requested": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["requested"]
                 ]
                 if obj.get("requested") is not None

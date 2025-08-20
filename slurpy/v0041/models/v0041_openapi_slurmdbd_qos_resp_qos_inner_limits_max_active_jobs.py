@@ -19,11 +19,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_per_accruing import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerAccruing,
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_active_jobs_accruing import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsAccruing,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_per_count import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerCount,
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_active_jobs_count import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsCount,
 )
 from typing import Set
 from typing_extensions import Self
@@ -34,8 +34,10 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobs(BaseModel):
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobs
     """  # noqa: E501
 
-    accruing: Optional[V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerAccruing] = None
-    count: Optional[V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerCount] = None
+    accruing: Optional[
+        V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsAccruing
+    ] = None
+    count: Optional[V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsCount] = None
     __properties: ClassVar[List[str]] = ["accruing", "count"]
 
     model_config = ConfigDict(
@@ -94,12 +96,12 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobs(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "accruing": V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerAccruing.from_dict(
+                "accruing": V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsAccruing.from_dict(
                     obj["accruing"]
                 )
                 if obj.get("accruing") is not None
                 else None,
-                "count": V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerCount.from_dict(
+                "count": V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsCount.from_dict(
                     obj["count"]
                 )
                 if obj.get("count") is not None

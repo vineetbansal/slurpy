@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_accounting_inner import (
-    V0041OpenapiAssocsRespAssociationsInnerAccountingInner,
+from slurpy.v0041.models.v0041_openapi_users_resp_users_inner_wckeys_inner_accounting_inner import (
+    V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -32,7 +32,7 @@ class V0041OpenapiUsersRespUsersInnerWckeysInner(BaseModel):
     """  # noqa: E501
 
     accounting: Optional[
-        List[V0041OpenapiAssocsRespAssociationsInnerAccountingInner]
+        List[V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInner]
     ] = Field(
         default=None, description="Accounting records containing related resource usage"
     )
@@ -123,7 +123,7 @@ class V0041OpenapiUsersRespUsersInnerWckeysInner(BaseModel):
         _obj = cls.model_validate(
             {
                 "accounting": [
-                    V0041OpenapiAssocsRespAssociationsInnerAccountingInner.from_dict(
+                    V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInner.from_dict(
                         _item
                     )
                     for _item in obj["accounting"]

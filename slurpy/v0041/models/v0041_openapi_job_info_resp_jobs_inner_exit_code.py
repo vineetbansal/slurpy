@@ -19,11 +19,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_derived_exit_code_return_code import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeReturnCode,
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_derived_exit_code_return_code import (
+    V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeReturnCode,
 )
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_derived_exit_code_signal import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeSignal,
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_derived_exit_code_signal import (
+    V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeSignal,
 )
 from typing import Set
 from typing_extensions import Self
@@ -37,10 +37,10 @@ class V0041OpenapiJobInfoRespJobsInnerExitCode(BaseModel):
     status: Optional[List[StrictStr]] = Field(
         default=None, description="Status given by return code"
     )
-    return_code: Optional[
-        V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeReturnCode
-    ] = None
-    signal: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeSignal] = None
+    return_code: Optional[V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeReturnCode] = (
+        None
+    )
+    signal: Optional[V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeSignal] = None
     __properties: ClassVar[List[str]] = ["status", "return_code", "signal"]
 
     @field_validator("status")
@@ -115,12 +115,12 @@ class V0041OpenapiJobInfoRespJobsInnerExitCode(BaseModel):
         _obj = cls.model_validate(
             {
                 "status": obj.get("status"),
-                "return_code": V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeReturnCode.from_dict(
+                "return_code": V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeReturnCode.from_dict(
                     obj["return_code"]
                 )
                 if obj.get("return_code") is not None
                 else None,
-                "signal": V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeSignal.from_dict(
+                "signal": V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeSignal.from_dict(
                     obj["signal"]
                 )
                 if obj.get("signal") is not None

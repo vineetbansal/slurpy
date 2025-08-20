@@ -19,11 +19,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_array_task_id import (
+    V0041OpenapiJobInfoRespJobsInnerArrayTaskId,
+)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_array_limits import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerArrayLimits,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_array_task_id import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerArrayTaskId,
 )
 from typing import Set
 from typing_extensions import Self
@@ -38,7 +38,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerArray(BaseModel):
         default=None, description="Job ID of job array, or 0 if N/A"
     )
     limits: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerArrayLimits] = None
-    task_id: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerArrayTaskId] = None
+    task_id: Optional[V0041OpenapiJobInfoRespJobsInnerArrayTaskId] = None
     task: Optional[StrictStr] = Field(
         default=None, description="String expression of task IDs in this record"
     )
@@ -106,7 +106,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerArray(BaseModel):
                 )
                 if obj.get("limits") is not None
                 else None,
-                "task_id": V0041OpenapiSlurmdbdJobsRespJobsInnerArrayTaskId.from_dict(
+                "task_id": V0041OpenapiJobInfoRespJobsInnerArrayTaskId.from_dict(
                     obj["task_id"]
                 )
                 if obj.get("task_id") is not None

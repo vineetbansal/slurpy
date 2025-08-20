@@ -27,6 +27,10 @@ from pydantic import (
     field_validator,
 )
 from typing import Any, ClassVar, Dict, List, Optional
+from slurpy.v0041.models.v0041_job_desc_msg_priority import V0041JobDescMsgPriority
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_derived_exit_code import (
+    V0041OpenapiJobInfoRespJobsInnerDerivedExitCode,
+)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_array import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerArray,
 )
@@ -36,9 +40,6 @@ from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_association
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_comment import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerComment,
 )
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_derived_exit_code import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCode,
-)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_exit_code import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerExitCode,
 )
@@ -47,9 +48,6 @@ from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_het import 
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_mcs import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerMcs,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_priority import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerPriority,
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_required import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerRequired,
@@ -101,9 +99,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInner(BaseModel):
     container: Optional[StrictStr] = Field(
         default=None, description="Absolute path to OCI container bundle"
     )
-    derived_exit_code: Optional[
-        V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCode
-    ] = None
+    derived_exit_code: Optional[V0041OpenapiJobInfoRespJobsInnerDerivedExitCode] = None
     time: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerTime] = None
     exit_code: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerExitCode] = None
     extra: Optional[StrictStr] = Field(
@@ -135,7 +131,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInner(BaseModel):
     hold: Optional[StrictBool] = Field(
         default=None, description="Hold (true) or release (false) job"
     )
-    priority: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerPriority] = None
+    priority: Optional[V0041JobDescMsgPriority] = None
     qos: Optional[StrictStr] = Field(
         default=None, description="Quality of Service assigned to the job"
     )
@@ -368,7 +364,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInner(BaseModel):
                 "cluster": obj.get("cluster"),
                 "constraints": obj.get("constraints"),
                 "container": obj.get("container"),
-                "derived_exit_code": V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCode.from_dict(
+                "derived_exit_code": V0041OpenapiJobInfoRespJobsInnerDerivedExitCode.from_dict(
                     obj["derived_exit_code"]
                 )
                 if obj.get("derived_exit_code") is not None
@@ -397,9 +393,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInner(BaseModel):
                 "nodes": obj.get("nodes"),
                 "partition": obj.get("partition"),
                 "hold": obj.get("hold"),
-                "priority": V0041OpenapiSlurmdbdJobsRespJobsInnerPriority.from_dict(
-                    obj["priority"]
-                )
+                "priority": V0041JobDescMsgPriority.from_dict(obj["priority"])
                 if obj.get("priority") is not None
                 else None,
                 "qos": obj.get("qos"),

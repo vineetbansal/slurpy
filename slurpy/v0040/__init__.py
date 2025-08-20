@@ -123,7 +123,6 @@ __all__ = [
     "V0040AssocMaxTres",
     "V0040AssocMaxTresGroup",
     "V0040AssocMaxTresMinutes",
-    "V0040AssocMaxTresMinutesPer",
     "V0040AssocMaxTresPer",
     "V0040AssocMin",
     "V0040AssocSharesObjWrapFairshare",
@@ -183,12 +182,13 @@ __all__ = [
     "V0040QosLimitsMaxWallClockPer",
     "V0040QosLimitsMin",
     "V0040QosLimitsMinTres",
+    "V0040QosLimitsMinTresPer",
     "V0040QosPreempt",
     "V0040ReservationInfoPurgeCompleted",
     "V0040RollupStatsInner",
     "V0040StatsMsgRpcsByTypeInner",
     "V0040StatsMsgRpcsByUserInner",
-    "V0040StatsUserTime",
+    "V0040StatsRpcTime",
     "V0040StepCPU",
     "V0040StepCPURequestedFrequency",
     "V0040StepNodes",
@@ -402,9 +402,6 @@ from slurpy.v0040.models.v0040_assoc_max_tres_group import (
 from slurpy.v0040.models.v0040_assoc_max_tres_minutes import (
     V0040AssocMaxTresMinutes as V0040AssocMaxTresMinutes,
 )
-from slurpy.v0040.models.v0040_assoc_max_tres_minutes_per import (
-    V0040AssocMaxTresMinutesPer as V0040AssocMaxTresMinutesPer,
-)
 from slurpy.v0040.models.v0040_assoc_max_tres_per import (
     V0040AssocMaxTresPer as V0040AssocMaxTresPer,
 )
@@ -560,6 +557,9 @@ from slurpy.v0040.models.v0040_qos_limits_min import (
 from slurpy.v0040.models.v0040_qos_limits_min_tres import (
     V0040QosLimitsMinTres as V0040QosLimitsMinTres,
 )
+from slurpy.v0040.models.v0040_qos_limits_min_tres_per import (
+    V0040QosLimitsMinTresPer as V0040QosLimitsMinTresPer,
+)
 from slurpy.v0040.models.v0040_qos_preempt import V0040QosPreempt as V0040QosPreempt
 from slurpy.v0040.models.v0040_reservation_info_purge_completed import (
     V0040ReservationInfoPurgeCompleted as V0040ReservationInfoPurgeCompleted,
@@ -573,8 +573,8 @@ from slurpy.v0040.models.v0040_stats_msg_rpcs_by_type_inner import (
 from slurpy.v0040.models.v0040_stats_msg_rpcs_by_user_inner import (
     V0040StatsMsgRpcsByUserInner as V0040StatsMsgRpcsByUserInner,
 )
-from slurpy.v0040.models.v0040_stats_user_time import (
-    V0040StatsUserTime as V0040StatsUserTime,
+from slurpy.v0040.models.v0040_stats_rpc_time import (
+    V0040StatsRpcTime as V0040StatsRpcTime,
 )
 from slurpy.v0040.models.v0040_step_cpu import V0040StepCPU as V0040StepCPU
 from slurpy.v0040.models.v0040_step_cpu_requested_frequency import (

@@ -28,8 +28,8 @@ from slurpy.v0041.models.v0041_openapi_accounts_resp_accounts_inner_coordinators
 from slurpy.v0041.models.v0041_openapi_users_resp_users_inner_default import (
     V0041OpenapiUsersRespUsersInnerDefault,
 )
-from slurpy.v0041.models.v0041_openapi_wckey_resp_wckeys_inner import (
-    V0041OpenapiWckeyRespWckeysInner,
+from slurpy.v0041.models.v0041_openapi_users_resp_users_inner_wckeys_inner import (
+    V0041OpenapiUsersRespUsersInnerWckeysInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -57,7 +57,7 @@ class V0041OpenapiUsersRespUsersInner(BaseModel):
     old_name: Optional[StrictStr] = Field(
         default=None, description="Previous user name"
     )
-    wckeys: Optional[List[V0041OpenapiWckeyRespWckeysInner]] = Field(
+    wckeys: Optional[List[V0041OpenapiUsersRespUsersInnerWckeysInner]] = Field(
         default=None, description="List of available WCKeys"
     )
     __properties: ClassVar[List[str]] = [
@@ -195,7 +195,7 @@ class V0041OpenapiUsersRespUsersInner(BaseModel):
                 "name": obj.get("name"),
                 "old_name": obj.get("old_name"),
                 "wckeys": [
-                    V0041OpenapiWckeyRespWckeysInner.from_dict(_item)
+                    V0041OpenapiUsersRespUsersInnerWckeysInner.from_dict(_item)
                     for _item in obj["wckeys"]
                 ]
                 if obj.get("wckeys") is not None

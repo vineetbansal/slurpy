@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociation,
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociation,
 )
 from typing import Set
 from typing_extensions import Self
@@ -33,7 +33,7 @@ class V0041OpenapiAccountsAddCondRespAssociationCondition(BaseModel):
 
     accounts: List[StrictStr] = Field(description="CSV accounts list")
     association: Optional[
-        V0041OpenapiAccountsAddCondRespAssociationConditionAssociation
+        V0041OpenapiUsersAddCondRespAssociationConditionAssociation
     ] = None
     clusters: Optional[List[StrictStr]] = Field(
         default=None, description="CSV clusters list"
@@ -94,7 +94,7 @@ class V0041OpenapiAccountsAddCondRespAssociationCondition(BaseModel):
         _obj = cls.model_validate(
             {
                 "accounts": obj.get("accounts"),
-                "association": V0041OpenapiAccountsAddCondRespAssociationConditionAssociation.from_dict(
+                "association": V0041OpenapiUsersAddCondRespAssociationConditionAssociation.from_dict(
                     obj["association"]
                 )
                 if obj.get("association") is not None

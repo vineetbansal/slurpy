@@ -19,38 +19,38 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grptres_inner import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_errors_inner import (
-    V0041OpenapiAccountsAddCondRespErrorsInner,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_meta import (
-    V0041OpenapiAccountsAddCondRespMeta,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_warnings_inner import (
-    V0041OpenapiAccountsAddCondRespWarningsInner,
-)
 from slurpy.v0041.models.v0041_openapi_accounts_resp_accounts_inner import (
     V0041OpenapiAccountsRespAccountsInner,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner import (
-    V0041OpenapiAssocsRespAssociationsInner,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_errors_inner import (
+    V0041OpenapiAccountsRespErrorsInner,
+)
+from slurpy.v0041.models.v0041_openapi_accounts_resp_meta import (
+    V0041OpenapiAccountsRespMeta,
+)
+from slurpy.v0041.models.v0041_openapi_accounts_resp_warnings_inner import (
+    V0041OpenapiAccountsRespWarningsInner,
 )
 from slurpy.v0041.models.v0041_openapi_clusters_resp_clusters_inner import (
     V0041OpenapiClustersRespClustersInner,
 )
-from slurpy.v0041.models.v0041_openapi_instances_resp_instances_inner import (
-    V0041OpenapiInstancesRespInstancesInner,
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInner,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_instances_inner import (
+    V0041OpenapiSlurmdbdConfigRespInstancesInner,
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner import (
     V0041OpenapiSlurmdbdQosRespQosInner,
 )
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner,
+)
 from slurpy.v0041.models.v0041_openapi_users_resp_users_inner import (
     V0041OpenapiUsersRespUsersInner,
 )
-from slurpy.v0041.models.v0041_openapi_wckey_resp_wckeys_inner import (
-    V0041OpenapiWckeyRespWckeysInner,
+from slurpy.v0041.models.v0041_openapi_users_resp_users_inner_wckeys_inner import (
+    V0041OpenapiUsersRespUsersInnerWckeysInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -64,9 +64,9 @@ class OpenAPISlurmdbdConfigResp(BaseModel):
     clusters: Optional[List[V0041OpenapiClustersRespClustersInner]] = Field(
         default=None, description="Clusters"
     )
-    tres: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="TRES")
+    tres: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="TRES"
+    )
     accounts: Optional[List[V0041OpenapiAccountsRespAccountsInner]] = Field(
         default=None, description="Accounts"
     )
@@ -76,20 +76,20 @@ class OpenAPISlurmdbdConfigResp(BaseModel):
     qos: Optional[List[V0041OpenapiSlurmdbdQosRespQosInner]] = Field(
         default=None, description="QOS"
     )
-    wckeys: Optional[List[V0041OpenapiWckeyRespWckeysInner]] = Field(
+    wckeys: Optional[List[V0041OpenapiUsersRespUsersInnerWckeysInner]] = Field(
         default=None, description="WCKeys"
     )
-    associations: Optional[List[V0041OpenapiAssocsRespAssociationsInner]] = Field(
-        default=None, description="Associations"
+    associations: Optional[List[V0041OpenapiSlurmdbdConfigRespAssociationsInner]] = (
+        Field(default=None, description="Associations")
     )
-    instances: Optional[List[V0041OpenapiInstancesRespInstancesInner]] = Field(
+    instances: Optional[List[V0041OpenapiSlurmdbdConfigRespInstancesInner]] = Field(
         default=None, description="Instances"
     )
-    meta: Optional[V0041OpenapiAccountsAddCondRespMeta] = None
-    errors: Optional[List[V0041OpenapiAccountsAddCondRespErrorsInner]] = Field(
+    meta: Optional[V0041OpenapiAccountsRespMeta] = None
+    errors: Optional[List[V0041OpenapiAccountsRespErrorsInner]] = Field(
         default=None, description="Query errors"
     )
-    warnings: Optional[List[V0041OpenapiAccountsAddCondRespWarningsInner]] = Field(
+    warnings: Optional[List[V0041OpenapiAccountsRespWarningsInner]] = Field(
         default=None, description="Query warnings"
     )
     __properties: ClassVar[List[str]] = [
@@ -236,9 +236,7 @@ class OpenAPISlurmdbdConfigResp(BaseModel):
                 if obj.get("clusters") is not None
                 else None,
                 "tres": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["tres"]
                 ]
                 if obj.get("tres") is not None
@@ -262,34 +260,34 @@ class OpenAPISlurmdbdConfigResp(BaseModel):
                 if obj.get("qos") is not None
                 else None,
                 "wckeys": [
-                    V0041OpenapiWckeyRespWckeysInner.from_dict(_item)
+                    V0041OpenapiUsersRespUsersInnerWckeysInner.from_dict(_item)
                     for _item in obj["wckeys"]
                 ]
                 if obj.get("wckeys") is not None
                 else None,
                 "associations": [
-                    V0041OpenapiAssocsRespAssociationsInner.from_dict(_item)
+                    V0041OpenapiSlurmdbdConfigRespAssociationsInner.from_dict(_item)
                     for _item in obj["associations"]
                 ]
                 if obj.get("associations") is not None
                 else None,
                 "instances": [
-                    V0041OpenapiInstancesRespInstancesInner.from_dict(_item)
+                    V0041OpenapiSlurmdbdConfigRespInstancesInner.from_dict(_item)
                     for _item in obj["instances"]
                 ]
                 if obj.get("instances") is not None
                 else None,
-                "meta": V0041OpenapiAccountsAddCondRespMeta.from_dict(obj["meta"])
+                "meta": V0041OpenapiAccountsRespMeta.from_dict(obj["meta"])
                 if obj.get("meta") is not None
                 else None,
                 "errors": [
-                    V0041OpenapiAccountsAddCondRespErrorsInner.from_dict(_item)
+                    V0041OpenapiAccountsRespErrorsInner.from_dict(_item)
                     for _item in obj["errors"]
                 ]
                 if obj.get("errors") is not None
                 else None,
                 "warnings": [
-                    V0041OpenapiAccountsAddCondRespWarningsInner.from_dict(_item)
+                    V0041OpenapiAccountsRespWarningsInner.from_dict(_item)
                     for _item in obj["warnings"]
                 ]
                 if obj.get("warnings") is not None

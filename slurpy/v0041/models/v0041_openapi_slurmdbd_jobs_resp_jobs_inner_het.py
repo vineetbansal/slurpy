@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_het_job_offset import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerHetJobOffset,
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_het_job_offset import (
+    V0041OpenapiJobInfoRespJobsInnerHetJobOffset,
 )
 from typing import Set
 from typing_extensions import Self
@@ -34,7 +34,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerHet(BaseModel):
     job_id: Optional[StrictInt] = Field(
         default=None, description="Heterogeneous job ID, if applicable"
     )
-    job_offset: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerHetJobOffset] = None
+    job_offset: Optional[V0041OpenapiJobInfoRespJobsInnerHetJobOffset] = None
     __properties: ClassVar[List[str]] = ["job_id", "job_offset"]
 
     model_config = ConfigDict(
@@ -91,7 +91,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerHet(BaseModel):
         _obj = cls.model_validate(
             {
                 "job_id": obj.get("job_id"),
-                "job_offset": V0041OpenapiSlurmdbdJobsRespJobsInnerHetJobOffset.from_dict(
+                "job_offset": V0041OpenapiJobInfoRespJobsInnerHetJobOffset.from_dict(
                     obj["job_offset"]
                 )
                 if obj.get("job_offset") is not None

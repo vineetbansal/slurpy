@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_min_priority_threshold import (
-    V0041OpenapiAssocsRespAssociationsInnerMinPriorityThreshold,
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_min_priority_threshold import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinPriorityThreshold,
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_min_tres import (
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinTres,
@@ -35,7 +35,7 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMin(BaseModel):
     """  # noqa: E501
 
     priority_threshold: Optional[
-        V0041OpenapiAssocsRespAssociationsInnerMinPriorityThreshold
+        V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinPriorityThreshold
     ] = None
     tres: Optional[V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinTres] = None
     __properties: ClassVar[List[str]] = ["priority_threshold", "tres"]
@@ -96,7 +96,7 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMin(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "priority_threshold": V0041OpenapiAssocsRespAssociationsInnerMinPriorityThreshold.from_dict(
+                "priority_threshold": V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinPriorityThreshold.from_dict(
                     obj["priority_threshold"]
                 )
                 if obj.get("priority_threshold") is not None

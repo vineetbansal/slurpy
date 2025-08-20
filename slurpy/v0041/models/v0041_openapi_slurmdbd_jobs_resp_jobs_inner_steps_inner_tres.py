@@ -19,14 +19,14 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grptres_inner import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner,
-)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_steps_inner_tres_consumed import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTresConsumed,
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_steps_inner_tres_requested import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTresRequested,
+)
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -43,9 +43,9 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTres(BaseModel):
     consumed: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTresConsumed] = (
         None
     )
-    allocated: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="Trackable resources allocated to the step")
+    allocated: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="Trackable resources allocated to the step"
+    )
     __properties: ClassVar[List[str]] = ["requested", "consumed", "allocated"]
 
     model_config = ConfigDict(
@@ -122,9 +122,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTres(BaseModel):
                 if obj.get("consumed") is not None
                 else None,
                 "allocated": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["allocated"]
                 ]
                 if obj.get("allocated") is not None

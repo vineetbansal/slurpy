@@ -1,9 +1,22 @@
 [tool.poetry]
-name = "slurpy"
+name = "ebi-slurpy"
 version = "0.1.0"
-description = ""
+description = "Python client for the Slurm REST API"
 authors = ["Sandy Rogers <sandyr@ebi.ac.uk>", "Aleksandar Rajkovic <aleksandar@ebi.ac.uk>"]
 readme = "README.md"
+license = "Apache-2.0"
+homepage = "https://github.com/EBI-Metagenomics/slurpy"
+repository = "https://github.com/EBI-Metagenomics/slurpy"
+keywords = ["slurm", "hpc", "rest-api", "job-scheduler"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: System :: Distributed Computing",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+packages = [{include = "slurpy"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -24,7 +37,7 @@ testcontainers = "^4.0.0"
 pytest = "^7.4.0"
 pytest-asyncio = "^0.21.0"
 
-[tool.ruff]
+[tool.ruff.lint]
 ignore = ["E721"]
 
 [build-system]

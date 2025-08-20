@@ -27,6 +27,14 @@ from pydantic import (
     field_validator,
 )
 from typing import Any, ClassVar, Dict, List, Optional
+from slurpy.v0041.models.v0041_job_desc_msg_memory_per_cpu import (
+    V0041JobDescMsgMemoryPerCpu,
+)
+from slurpy.v0041.models.v0041_job_desc_msg_priority import V0041JobDescMsgPriority
+from slurpy.v0041.models.v0041_job_desc_msg_time_limit import V0041JobDescMsgTimeLimit
+from slurpy.v0041.models.v0041_job_desc_msg_time_minimum import (
+    V0041JobDescMsgTimeMinimum,
+)
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_accrue_time import (
     V0041OpenapiJobInfoRespJobsInnerAccrueTime,
 )
@@ -35,6 +43,9 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_array_job_id imp
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_array_max_tasks import (
     V0041OpenapiJobInfoRespJobsInnerArrayMaxTasks,
+)
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_array_task_id import (
+    V0041OpenapiJobInfoRespJobsInnerArrayTaskId,
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_billable_tres import (
     V0041OpenapiJobInfoRespJobsInnerBillableTres,
@@ -63,6 +74,9 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_deadline import 
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_delay_boot import (
     V0041OpenapiJobInfoRespJobsInnerDelayBoot,
 )
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_derived_exit_code import (
+    V0041OpenapiJobInfoRespJobsInnerDerivedExitCode,
+)
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_eligible_time import (
     V0041OpenapiJobInfoRespJobsInnerEligibleTime,
 )
@@ -75,6 +89,9 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_exit_code import
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_het_job_id import (
     V0041OpenapiJobInfoRespJobsInnerHetJobId,
 )
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_het_job_offset import (
+    V0041OpenapiJobInfoRespJobsInnerHetJobOffset,
+)
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_job_resources import (
     V0041OpenapiJobInfoRespJobsInnerJobResources,
 )
@@ -86,6 +103,9 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_max_cpus import 
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_max_nodes import (
     V0041OpenapiJobInfoRespJobsInnerMaxNodes,
+)
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_memory_per_node import (
+    V0041OpenapiJobInfoRespJobsInnerMemoryPerNode,
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_minimum_cpus_per_node import (
     V0041OpenapiJobInfoRespJobsInnerMinimumCpusPerNode,
@@ -144,30 +164,6 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_tasks_per_tres i
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_threads_per_core import (
     V0041OpenapiJobInfoRespJobsInnerThreadsPerCore,
 )
-from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_time_minimum import (
-    V0041OpenapiJobInfoRespJobsInnerTimeMinimum,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_array_task_id import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerArrayTaskId,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_derived_exit_code import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCode,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_het_job_offset import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerHetJobOffset,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_priority import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerPriority,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_required_memory_per_cpu import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_required_memory_per_node import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerNode,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_time_limit import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit,
-)
 from typing import Set
 from typing_extensions import Self
 
@@ -188,7 +184,7 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
         default=None, description="Local node making the resource allocation"
     )
     array_job_id: Optional[V0041OpenapiJobInfoRespJobsInnerArrayJobId] = None
-    array_task_id: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerArrayTaskId] = None
+    array_task_id: Optional[V0041OpenapiJobInfoRespJobsInnerArrayTaskId] = None
     array_max_tasks: Optional[V0041OpenapiJobInfoRespJobsInnerArrayMaxTasks] = None
     array_task_string: Optional[StrictStr] = Field(
         default=None, description="String expression of task IDs in this record"
@@ -258,9 +254,7 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
         default=None,
         description="Other jobs that must meet certain criteria before this job can start",
     )
-    derived_exit_code: Optional[
-        V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCode
-    ] = None
+    derived_exit_code: Optional[V0041OpenapiJobInfoRespJobsInnerDerivedExitCode] = None
     eligible_time: Optional[V0041OpenapiJobInfoRespJobsInnerEligibleTime] = None
     end_time: Optional[V0041OpenapiJobInfoRespJobsInnerEndTime] = None
     excluded_nodes: Optional[StrictStr] = Field(
@@ -299,7 +293,7 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
     het_job_id_set: Optional[StrictStr] = Field(
         default=None, description="Job ID range for all heterogeneous job components"
     )
-    het_job_offset: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerHetJobOffset] = None
+    het_job_offset: Optional[V0041OpenapiJobInfoRespJobsInnerHetJobOffset] = None
     job_id: Optional[StrictInt] = Field(default=None, description="Job ID")
     job_resources: Optional[V0041OpenapiJobInfoRespJobsInnerJobResources] = None
     job_size_str: Optional[List[StrictStr]] = Field(
@@ -354,12 +348,8 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
         default=None,
         description="Feature(s) the job requested but that are not required",
     )
-    memory_per_cpu: Optional[
-        V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu
-    ] = None
-    memory_per_node: Optional[
-        V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerNode
-    ] = None
+    memory_per_cpu: Optional[V0041JobDescMsgMemoryPerCpu] = None
+    memory_per_node: Optional[V0041OpenapiJobInfoRespJobsInnerMemoryPerNode] = None
     minimum_cpus_per_node: Optional[
         V0041OpenapiJobInfoRespJobsInnerMinimumCpusPerNode
     ] = None
@@ -373,7 +363,7 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
     hold: Optional[StrictBool] = Field(
         default=None, description="Hold (true) or release (false) job"
     )
-    priority: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerPriority] = None
+    priority: Optional[V0041JobDescMsgPriority] = None
     profile: Optional[List[StrictStr]] = Field(
         default=None, description="Profile used by the acct_gather_profile plugin"
     )
@@ -439,8 +429,8 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
     system_comment: Optional[StrictStr] = Field(
         default=None, description="Arbitrary comment from slurmctld"
     )
-    time_limit: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit] = None
-    time_minimum: Optional[V0041OpenapiJobInfoRespJobsInnerTimeMinimum] = None
+    time_limit: Optional[V0041JobDescMsgTimeLimit] = None
+    time_minimum: Optional[V0041JobDescMsgTimeMinimum] = None
     threads_per_core: Optional[V0041OpenapiJobInfoRespJobsInnerThreadsPerCore] = None
     tres_bind: Optional[StrictStr] = Field(
         default=None, description="Task to TRES binding directives"
@@ -997,7 +987,7 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
                 )
                 if obj.get("array_job_id") is not None
                 else None,
-                "array_task_id": V0041OpenapiSlurmdbdJobsRespJobsInnerArrayTaskId.from_dict(
+                "array_task_id": V0041OpenapiJobInfoRespJobsInnerArrayTaskId.from_dict(
                     obj["array_task_id"]
                 )
                 if obj.get("array_task_id") is not None
@@ -1067,7 +1057,7 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
                 if obj.get("delay_boot") is not None
                 else None,
                 "dependency": obj.get("dependency"),
-                "derived_exit_code": V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCode.from_dict(
+                "derived_exit_code": V0041OpenapiJobInfoRespJobsInnerDerivedExitCode.from_dict(
                     obj["derived_exit_code"]
                 )
                 if obj.get("derived_exit_code") is not None
@@ -1103,7 +1093,7 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
                 if obj.get("het_job_id") is not None
                 else None,
                 "het_job_id_set": obj.get("het_job_id_set"),
-                "het_job_offset": V0041OpenapiSlurmdbdJobsRespJobsInnerHetJobOffset.from_dict(
+                "het_job_offset": V0041OpenapiJobInfoRespJobsInnerHetJobOffset.from_dict(
                     obj["het_job_offset"]
                 )
                 if obj.get("het_job_offset") is not None
@@ -1178,12 +1168,12 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
                 else None,
                 "partition": obj.get("partition"),
                 "prefer": obj.get("prefer"),
-                "memory_per_cpu": V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu.from_dict(
+                "memory_per_cpu": V0041JobDescMsgMemoryPerCpu.from_dict(
                     obj["memory_per_cpu"]
                 )
                 if obj.get("memory_per_cpu") is not None
                 else None,
-                "memory_per_node": V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerNode.from_dict(
+                "memory_per_node": V0041OpenapiJobInfoRespJobsInnerMemoryPerNode.from_dict(
                     obj["memory_per_node"]
                 )
                 if obj.get("memory_per_node") is not None
@@ -1217,9 +1207,7 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
                 if obj.get("pre_sus_time") is not None
                 else None,
                 "hold": obj.get("hold"),
-                "priority": V0041OpenapiSlurmdbdJobsRespJobsInnerPriority.from_dict(
-                    obj["priority"]
-                )
+                "priority": V0041JobDescMsgPriority.from_dict(obj["priority"])
                 if obj.get("priority") is not None
                 else None,
                 "profile": obj.get("profile"),
@@ -1268,12 +1256,10 @@ class V0041OpenapiJobInfoRespJobsInner(BaseModel):
                 if obj.get("suspend_time") is not None
                 else None,
                 "system_comment": obj.get("system_comment"),
-                "time_limit": V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit.from_dict(
-                    obj["time_limit"]
-                )
+                "time_limit": V0041JobDescMsgTimeLimit.from_dict(obj["time_limit"])
                 if obj.get("time_limit") is not None
                 else None,
-                "time_minimum": V0041OpenapiJobInfoRespJobsInnerTimeMinimum.from_dict(
+                "time_minimum": V0041JobDescMsgTimeMinimum.from_dict(
                     obj["time_minimum"]
                 )
                 if obj.get("time_minimum") is not None

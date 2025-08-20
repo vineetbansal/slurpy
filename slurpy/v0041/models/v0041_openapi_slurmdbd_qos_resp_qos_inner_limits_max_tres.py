@@ -19,14 +19,14 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grptres_inner import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner,
-)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_tres_minutes import (
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTresMinutes,
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_tres_per import (
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTresPer,
+)
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -37,9 +37,9 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTres(BaseModel):
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTres
     """  # noqa: E501
 
-    total: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="GrpTRES")
+    total: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="GrpTRES"
+    )
     minutes: Optional[V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTresMinutes] = None
     per: Optional[V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTresPer] = None
     __properties: ClassVar[List[str]] = ["total", "minutes", "per"]
@@ -108,9 +108,7 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTres(BaseModel):
         _obj = cls.model_validate(
             {
                 "total": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["total"]
                 ]
                 if obj.get("total") is not None

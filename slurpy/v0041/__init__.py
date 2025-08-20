@@ -72,6 +72,8 @@ __all__ = [
     "V0041JobDescMsgCrontabLine",
     "V0041JobDescMsgDistributionPlaneSize",
     "V0041JobDescMsgKillWarningDelay",
+    "V0041JobDescMsgMemoryPerCpu",
+    "V0041JobDescMsgPriority",
     "V0041JobDescMsgRequiredSwitches",
     "V0041JobDescMsgRlimits",
     "V0041JobDescMsgRlimitsAs",
@@ -85,55 +87,20 @@ __all__ = [
     "V0041JobDescMsgRlimitsRss",
     "V0041JobDescMsgRlimitsStack",
     "V0041JobDescMsgSegmentSize",
+    "V0041JobDescMsgTimeLimit",
+    "V0041JobDescMsgTimeMinimum",
     "V0041OpenapiAccountsAddCondRespAccount",
     "V0041OpenapiAccountsAddCondRespAssociationCondition",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociation",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpjobs",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpjobsaccrue",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpsubmitjobs",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpwall",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxjobs",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxjobsaccrue",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxsubmitjobs",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxwalldurationperjob",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMinpriothresh",
-    "V0041OpenapiAccountsAddCondRespAssociationConditionAssociationPriority",
-    "V0041OpenapiAccountsAddCondRespErrorsInner",
-    "V0041OpenapiAccountsAddCondRespMeta",
-    "V0041OpenapiAccountsAddCondRespMetaClient",
-    "V0041OpenapiAccountsAddCondRespMetaPlugin",
-    "V0041OpenapiAccountsAddCondRespMetaSlurm",
-    "V0041OpenapiAccountsAddCondRespMetaSlurmVersion",
-    "V0041OpenapiAccountsAddCondRespWarningsInner",
     "V0041OpenapiAccountsRespAccountsInner",
     "V0041OpenapiAccountsRespAccountsInnerAssociationsInner",
     "V0041OpenapiAccountsRespAccountsInnerCoordinatorsInner",
-    "V0041OpenapiAssocsRespAssociationsInner",
-    "V0041OpenapiAssocsRespAssociationsInnerAccountingInner",
-    "V0041OpenapiAssocsRespAssociationsInnerAccountingInnerAllocated",
-    "V0041OpenapiAssocsRespAssociationsInnerAccountingInnerTRES",
-    "V0041OpenapiAssocsRespAssociationsInnerDefault",
-    "V0041OpenapiAssocsRespAssociationsInnerMax",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxJobs",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxJobsAccruing",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxJobsActive",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxJobsPer",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerAccruing",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerCount",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerSubmitted",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerWallClock",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxJobsTotal",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxPer",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxPerAccount",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxPerAccountWallClock",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxTres",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxTresGroup",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxTresMinutes",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxTresMinutesPer",
-    "V0041OpenapiAssocsRespAssociationsInnerMaxTresPer",
-    "V0041OpenapiAssocsRespAssociationsInnerMin",
-    "V0041OpenapiAssocsRespAssociationsInnerMinPriorityThreshold",
+    "V0041OpenapiAccountsRespErrorsInner",
+    "V0041OpenapiAccountsRespMeta",
+    "V0041OpenapiAccountsRespMetaClient",
+    "V0041OpenapiAccountsRespMetaPlugin",
+    "V0041OpenapiAccountsRespMetaSlurm",
+    "V0041OpenapiAccountsRespMetaSlurmVersion",
+    "V0041OpenapiAccountsRespWarningsInner",
     "V0041OpenapiClustersRespClustersInner",
     "V0041OpenapiClustersRespClustersInnerAssociations",
     "V0041OpenapiClustersRespClustersInnerAssociationsRoot",
@@ -150,12 +117,11 @@ __all__ = [
     "V0041OpenapiDiagRespStatisticsRpcsByMessageTypeInnerAverageTime",
     "V0041OpenapiDiagRespStatisticsRpcsByUserInner",
     "V0041OpenapiDiagRespStatisticsScheduleExit",
-    "V0041OpenapiInstancesRespInstancesInner",
-    "V0041OpenapiInstancesRespInstancesInnerTime",
     "V0041OpenapiJobInfoRespJobsInner",
     "V0041OpenapiJobInfoRespJobsInnerAccrueTime",
     "V0041OpenapiJobInfoRespJobsInnerArrayJobId",
     "V0041OpenapiJobInfoRespJobsInnerArrayMaxTasks",
+    "V0041OpenapiJobInfoRespJobsInnerArrayTaskId",
     "V0041OpenapiJobInfoRespJobsInnerBillableTres",
     "V0041OpenapiJobInfoRespJobsInnerCoresPerSocket",
     "V0041OpenapiJobInfoRespJobsInnerCpuFrequencyGovernor",
@@ -165,10 +131,15 @@ __all__ = [
     "V0041OpenapiJobInfoRespJobsInnerCpusPerTask",
     "V0041OpenapiJobInfoRespJobsInnerDeadline",
     "V0041OpenapiJobInfoRespJobsInnerDelayBoot",
+    "V0041OpenapiJobInfoRespJobsInnerDerivedExitCode",
+    "V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeReturnCode",
+    "V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeSignal",
+    "V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeSignalId",
     "V0041OpenapiJobInfoRespJobsInnerEligibleTime",
     "V0041OpenapiJobInfoRespJobsInnerEndTime",
     "V0041OpenapiJobInfoRespJobsInnerExitCode",
     "V0041OpenapiJobInfoRespJobsInnerHetJobId",
+    "V0041OpenapiJobInfoRespJobsInnerHetJobOffset",
     "V0041OpenapiJobInfoRespJobsInnerJobResources",
     "V0041OpenapiJobInfoRespJobsInnerJobResourcesNodes",
     "V0041OpenapiJobInfoRespJobsInnerJobResourcesNodesAllocationInner",
@@ -180,6 +151,7 @@ __all__ = [
     "V0041OpenapiJobInfoRespJobsInnerLastSchedEvaluation",
     "V0041OpenapiJobInfoRespJobsInnerMaxCpus",
     "V0041OpenapiJobInfoRespJobsInnerMaxNodes",
+    "V0041OpenapiJobInfoRespJobsInnerMemoryPerNode",
     "V0041OpenapiJobInfoRespJobsInnerMinimumCpusPerNode",
     "V0041OpenapiJobInfoRespJobsInnerMinimumTmpDiskPerNode",
     "V0041OpenapiJobInfoRespJobsInnerNodeCount",
@@ -199,7 +171,6 @@ __all__ = [
     "V0041OpenapiJobInfoRespJobsInnerTasksPerSocket",
     "V0041OpenapiJobInfoRespJobsInnerTasksPerTres",
     "V0041OpenapiJobInfoRespJobsInnerThreadsPerCore",
-    "V0041OpenapiJobInfoRespJobsInnerTimeMinimum",
     "V0041OpenapiJobInfoRespLastBackfill",
     "V0041OpenapiJobInfoRespLastUpdate",
     "V0041OpenapiJobPostResponseResultsInner",
@@ -267,26 +238,36 @@ __all__ = [
     "V0041OpenapiSharesRespSharesSharesInnerTresRunSecondsInnerValue",
     "V0041OpenapiSharesRespSharesSharesInnerTresUsageInner",
     "V0041OpenapiSharesRespSharesSharesInnerUsageNormalized",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInner",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerDefault",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMax",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobs",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsAccruing",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsActive",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsPer",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsPerSubmitted",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsTotal",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxPer",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxPerAccount",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTres",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresGroup",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresMinutes",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresMinutesPer",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresPer",
+    "V0041OpenapiSlurmdbdConfigRespAssociationsInnerMin",
+    "V0041OpenapiSlurmdbdConfigRespInstancesInner",
+    "V0041OpenapiSlurmdbdConfigRespInstancesInnerTime",
     "V0041OpenapiSlurmdbdJobsRespJobsInner",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerArray",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerArrayLimits",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerArrayLimitsMax",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerArrayLimitsMaxRunning",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerArrayTaskId",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerAssociation",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerComment",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCode",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeReturnCode",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeSignal",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeSignalId",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerExitCode",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerHet",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerHetJobOffset",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerMcs",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerPriority",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerRequired",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerNode",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerReservation",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerState",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInner",
@@ -312,7 +293,6 @@ __all__ = [
     "V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTresConsumed",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTresRequested",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerTime",
-    "V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerTimePlanned",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerTimeSystem",
     "V0041OpenapiSlurmdbdJobsRespJobsInnerTimeTotal",
@@ -328,6 +308,8 @@ __all__ = [
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxAccruingPerAccount",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxAccruingPerUser",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobs",
+    "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsAccruing",
+    "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsCount",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxJobs",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxJobsActiveJobs",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxJobsActiveJobsPer",
@@ -342,7 +324,10 @@ __all__ = [
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxTresPer",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClock",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPer",
+    "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerJob",
+    "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerQos",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMin",
+    "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinPriorityThreshold",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinTres",
     "V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinTresPer",
     "V0041OpenapiSlurmdbdQosRespQosInnerPreempt",
@@ -361,11 +346,26 @@ __all__ = [
     "V0041OpenapiSlurmdbdStatsRespStatisticsRollupsMonthly",
     "V0041OpenapiSlurmdbdStatsRespStatisticsRollupsMonthlyDuration",
     "V0041OpenapiSlurmdbdStatsRespStatisticsUsersInner",
+    "V0041OpenapiTresRespTRESInner",
     "V0041OpenapiUsersAddCondRespAssociationCondition",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociation",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpjobs",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpjobsaccrue",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpsubmitjobs",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpwall",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxjobs",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxjobsaccrue",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxsubmitjobs",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxwalldurationperjob",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationMinpriothresh",
+    "V0041OpenapiUsersAddCondRespAssociationConditionAssociationPriority",
     "V0041OpenapiUsersAddCondRespUser",
     "V0041OpenapiUsersRespUsersInner",
     "V0041OpenapiUsersRespUsersInnerDefault",
-    "V0041OpenapiWckeyRespWckeysInner",
+    "V0041OpenapiUsersRespUsersInnerWckeysInner",
+    "V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInner",
+    "V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInnerAllocated",
+    "V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInnerTRES",
     "V0041UpdateNodeMsgResumeAfter",
     "V0041UpdateNodeMsgWeight",
 ]
@@ -493,6 +493,12 @@ from slurpy.v0041.models.v0041_job_desc_msg_distribution_plane_size import (
 from slurpy.v0041.models.v0041_job_desc_msg_kill_warning_delay import (
     V0041JobDescMsgKillWarningDelay as V0041JobDescMsgKillWarningDelay,
 )
+from slurpy.v0041.models.v0041_job_desc_msg_memory_per_cpu import (
+    V0041JobDescMsgMemoryPerCpu as V0041JobDescMsgMemoryPerCpu,
+)
+from slurpy.v0041.models.v0041_job_desc_msg_priority import (
+    V0041JobDescMsgPriority as V0041JobDescMsgPriority,
+)
 from slurpy.v0041.models.v0041_job_desc_msg_required_switches import (
     V0041JobDescMsgRequiredSwitches as V0041JobDescMsgRequiredSwitches,
 )
@@ -532,68 +538,17 @@ from slurpy.v0041.models.v0041_job_desc_msg_rlimits_stack import (
 from slurpy.v0041.models.v0041_job_desc_msg_segment_size import (
     V0041JobDescMsgSegmentSize as V0041JobDescMsgSegmentSize,
 )
+from slurpy.v0041.models.v0041_job_desc_msg_time_limit import (
+    V0041JobDescMsgTimeLimit as V0041JobDescMsgTimeLimit,
+)
+from slurpy.v0041.models.v0041_job_desc_msg_time_minimum import (
+    V0041JobDescMsgTimeMinimum as V0041JobDescMsgTimeMinimum,
+)
 from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_account import (
     V0041OpenapiAccountsAddCondRespAccount as V0041OpenapiAccountsAddCondRespAccount,
 )
 from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition import (
     V0041OpenapiAccountsAddCondRespAssociationCondition as V0041OpenapiAccountsAddCondRespAssociationCondition,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociation as V0041OpenapiAccountsAddCondRespAssociationConditionAssociation,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grpjobs import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpjobs as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpjobs,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grpjobsaccrue import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpjobsaccrue as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpjobsaccrue,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grpsubmitjobs import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpsubmitjobs as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpsubmitjobs,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grptres_inner import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grpwall import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpwall as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrpwall,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_maxjobs import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxjobs as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxjobs,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_maxjobsaccrue import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxjobsaccrue as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxjobsaccrue,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_maxsubmitjobs import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxsubmitjobs as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxsubmitjobs,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_maxwalldurationperjob import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxwalldurationperjob as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMaxwalldurationperjob,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_minpriothresh import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMinpriothresh as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationMinpriothresh,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_priority import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationPriority as V0041OpenapiAccountsAddCondRespAssociationConditionAssociationPriority,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_errors_inner import (
-    V0041OpenapiAccountsAddCondRespErrorsInner as V0041OpenapiAccountsAddCondRespErrorsInner,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_meta import (
-    V0041OpenapiAccountsAddCondRespMeta as V0041OpenapiAccountsAddCondRespMeta,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_meta_client import (
-    V0041OpenapiAccountsAddCondRespMetaClient as V0041OpenapiAccountsAddCondRespMetaClient,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_meta_plugin import (
-    V0041OpenapiAccountsAddCondRespMetaPlugin as V0041OpenapiAccountsAddCondRespMetaPlugin,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_meta_slurm import (
-    V0041OpenapiAccountsAddCondRespMetaSlurm as V0041OpenapiAccountsAddCondRespMetaSlurm,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_meta_slurm_version import (
-    V0041OpenapiAccountsAddCondRespMetaSlurmVersion as V0041OpenapiAccountsAddCondRespMetaSlurmVersion,
-)
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_warnings_inner import (
-    V0041OpenapiAccountsAddCondRespWarningsInner as V0041OpenapiAccountsAddCondRespWarningsInner,
 )
 from slurpy.v0041.models.v0041_openapi_accounts_resp_accounts_inner import (
     V0041OpenapiAccountsRespAccountsInner as V0041OpenapiAccountsRespAccountsInner,
@@ -604,80 +559,26 @@ from slurpy.v0041.models.v0041_openapi_accounts_resp_accounts_inner_associations
 from slurpy.v0041.models.v0041_openapi_accounts_resp_accounts_inner_coordinators_inner import (
     V0041OpenapiAccountsRespAccountsInnerCoordinatorsInner as V0041OpenapiAccountsRespAccountsInnerCoordinatorsInner,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner import (
-    V0041OpenapiAssocsRespAssociationsInner as V0041OpenapiAssocsRespAssociationsInner,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_errors_inner import (
+    V0041OpenapiAccountsRespErrorsInner as V0041OpenapiAccountsRespErrorsInner,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_accounting_inner import (
-    V0041OpenapiAssocsRespAssociationsInnerAccountingInner as V0041OpenapiAssocsRespAssociationsInnerAccountingInner,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_meta import (
+    V0041OpenapiAccountsRespMeta as V0041OpenapiAccountsRespMeta,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_accounting_inner_allocated import (
-    V0041OpenapiAssocsRespAssociationsInnerAccountingInnerAllocated as V0041OpenapiAssocsRespAssociationsInnerAccountingInnerAllocated,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_meta_client import (
+    V0041OpenapiAccountsRespMetaClient as V0041OpenapiAccountsRespMetaClient,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_accounting_inner_tres import (
-    V0041OpenapiAssocsRespAssociationsInnerAccountingInnerTRES as V0041OpenapiAssocsRespAssociationsInnerAccountingInnerTRES,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_meta_plugin import (
+    V0041OpenapiAccountsRespMetaPlugin as V0041OpenapiAccountsRespMetaPlugin,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_default import (
-    V0041OpenapiAssocsRespAssociationsInnerDefault as V0041OpenapiAssocsRespAssociationsInnerDefault,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_meta_slurm import (
+    V0041OpenapiAccountsRespMetaSlurm as V0041OpenapiAccountsRespMetaSlurm,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max import (
-    V0041OpenapiAssocsRespAssociationsInnerMax as V0041OpenapiAssocsRespAssociationsInnerMax,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_meta_slurm_version import (
+    V0041OpenapiAccountsRespMetaSlurmVersion as V0041OpenapiAccountsRespMetaSlurmVersion,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobs as V0041OpenapiAssocsRespAssociationsInnerMaxJobs,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_accruing import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsAccruing as V0041OpenapiAssocsRespAssociationsInnerMaxJobsAccruing,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_active import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsActive as V0041OpenapiAssocsRespAssociationsInnerMaxJobsActive,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_per import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsPer as V0041OpenapiAssocsRespAssociationsInnerMaxJobsPer,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_per_accruing import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerAccruing as V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerAccruing,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_per_count import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerCount as V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerCount,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_per_submitted import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerSubmitted as V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerSubmitted,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_per_wall_clock import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerWallClock as V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerWallClock,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_total import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsTotal as V0041OpenapiAssocsRespAssociationsInnerMaxJobsTotal,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_per import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxPer as V0041OpenapiAssocsRespAssociationsInnerMaxPer,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_per_account import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxPerAccount as V0041OpenapiAssocsRespAssociationsInnerMaxPerAccount,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_per_account_wall_clock import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxPerAccountWallClock as V0041OpenapiAssocsRespAssociationsInnerMaxPerAccountWallClock,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_tres import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxTres as V0041OpenapiAssocsRespAssociationsInnerMaxTres,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_tres_group import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxTresGroup as V0041OpenapiAssocsRespAssociationsInnerMaxTresGroup,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_tres_minutes import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxTresMinutes as V0041OpenapiAssocsRespAssociationsInnerMaxTresMinutes,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_tres_minutes_per import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxTresMinutesPer as V0041OpenapiAssocsRespAssociationsInnerMaxTresMinutesPer,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_tres_per import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxTresPer as V0041OpenapiAssocsRespAssociationsInnerMaxTresPer,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_min import (
-    V0041OpenapiAssocsRespAssociationsInnerMin as V0041OpenapiAssocsRespAssociationsInnerMin,
-)
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_min_priority_threshold import (
-    V0041OpenapiAssocsRespAssociationsInnerMinPriorityThreshold as V0041OpenapiAssocsRespAssociationsInnerMinPriorityThreshold,
+from slurpy.v0041.models.v0041_openapi_accounts_resp_warnings_inner import (
+    V0041OpenapiAccountsRespWarningsInner as V0041OpenapiAccountsRespWarningsInner,
 )
 from slurpy.v0041.models.v0041_openapi_clusters_resp_clusters_inner import (
     V0041OpenapiClustersRespClustersInner as V0041OpenapiClustersRespClustersInner,
@@ -727,12 +628,6 @@ from slurpy.v0041.models.v0041_openapi_diag_resp_statistics_rpcs_by_user_inner i
 from slurpy.v0041.models.v0041_openapi_diag_resp_statistics_schedule_exit import (
     V0041OpenapiDiagRespStatisticsScheduleExit as V0041OpenapiDiagRespStatisticsScheduleExit,
 )
-from slurpy.v0041.models.v0041_openapi_instances_resp_instances_inner import (
-    V0041OpenapiInstancesRespInstancesInner as V0041OpenapiInstancesRespInstancesInner,
-)
-from slurpy.v0041.models.v0041_openapi_instances_resp_instances_inner_time import (
-    V0041OpenapiInstancesRespInstancesInnerTime as V0041OpenapiInstancesRespInstancesInnerTime,
-)
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner import (
     V0041OpenapiJobInfoRespJobsInner as V0041OpenapiJobInfoRespJobsInner,
 )
@@ -744,6 +639,9 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_array_job_id imp
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_array_max_tasks import (
     V0041OpenapiJobInfoRespJobsInnerArrayMaxTasks as V0041OpenapiJobInfoRespJobsInnerArrayMaxTasks,
+)
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_array_task_id import (
+    V0041OpenapiJobInfoRespJobsInnerArrayTaskId as V0041OpenapiJobInfoRespJobsInnerArrayTaskId,
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_billable_tres import (
     V0041OpenapiJobInfoRespJobsInnerBillableTres as V0041OpenapiJobInfoRespJobsInnerBillableTres,
@@ -772,6 +670,18 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_deadline import 
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_delay_boot import (
     V0041OpenapiJobInfoRespJobsInnerDelayBoot as V0041OpenapiJobInfoRespJobsInnerDelayBoot,
 )
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_derived_exit_code import (
+    V0041OpenapiJobInfoRespJobsInnerDerivedExitCode as V0041OpenapiJobInfoRespJobsInnerDerivedExitCode,
+)
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_derived_exit_code_return_code import (
+    V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeReturnCode as V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeReturnCode,
+)
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_derived_exit_code_signal import (
+    V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeSignal as V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeSignal,
+)
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_derived_exit_code_signal_id import (
+    V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeSignalId as V0041OpenapiJobInfoRespJobsInnerDerivedExitCodeSignalId,
+)
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_eligible_time import (
     V0041OpenapiJobInfoRespJobsInnerEligibleTime as V0041OpenapiJobInfoRespJobsInnerEligibleTime,
 )
@@ -783,6 +693,9 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_exit_code import
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_het_job_id import (
     V0041OpenapiJobInfoRespJobsInnerHetJobId as V0041OpenapiJobInfoRespJobsInnerHetJobId,
+)
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_het_job_offset import (
+    V0041OpenapiJobInfoRespJobsInnerHetJobOffset as V0041OpenapiJobInfoRespJobsInnerHetJobOffset,
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_job_resources import (
     V0041OpenapiJobInfoRespJobsInnerJobResources as V0041OpenapiJobInfoRespJobsInnerJobResources,
@@ -816,6 +729,9 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_max_cpus import 
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_max_nodes import (
     V0041OpenapiJobInfoRespJobsInnerMaxNodes as V0041OpenapiJobInfoRespJobsInnerMaxNodes,
+)
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_memory_per_node import (
+    V0041OpenapiJobInfoRespJobsInnerMemoryPerNode as V0041OpenapiJobInfoRespJobsInnerMemoryPerNode,
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_minimum_cpus_per_node import (
     V0041OpenapiJobInfoRespJobsInnerMinimumCpusPerNode as V0041OpenapiJobInfoRespJobsInnerMinimumCpusPerNode,
@@ -873,9 +789,6 @@ from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_tasks_per_tres i
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_threads_per_core import (
     V0041OpenapiJobInfoRespJobsInnerThreadsPerCore as V0041OpenapiJobInfoRespJobsInnerThreadsPerCore,
-)
-from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_time_minimum import (
-    V0041OpenapiJobInfoRespJobsInnerTimeMinimum as V0041OpenapiJobInfoRespJobsInnerTimeMinimum,
 )
 from slurpy.v0041.models.v0041_openapi_job_info_resp_last_backfill import (
     V0041OpenapiJobInfoRespLastBackfill as V0041OpenapiJobInfoRespLastBackfill,
@@ -1078,6 +991,63 @@ from slurpy.v0041.models.v0041_openapi_shares_resp_shares_shares_inner_tres_usag
 from slurpy.v0041.models.v0041_openapi_shares_resp_shares_shares_inner_usage_normalized import (
     V0041OpenapiSharesRespSharesSharesInnerUsageNormalized as V0041OpenapiSharesRespSharesSharesInnerUsageNormalized,
 )
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInner as V0041OpenapiSlurmdbdConfigRespAssociationsInner,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_default import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerDefault as V0041OpenapiSlurmdbdConfigRespAssociationsInnerDefault,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMax as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMax,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_jobs import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobs as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobs,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_jobs_accruing import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsAccruing as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsAccruing,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_jobs_active import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsActive as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsActive,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_jobs_per import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsPer as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsPer,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_jobs_per_submitted import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsPerSubmitted as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsPerSubmitted,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_jobs_total import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsTotal as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxJobsTotal,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_per import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxPer as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxPer,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_per_account import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxPerAccount as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxPerAccount,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_tres import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTres as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTres,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_tres_group import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresGroup as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresGroup,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_tres_minutes import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresMinutes as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresMinutes,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_tres_minutes_per import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresMinutesPer as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresMinutesPer,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_max_tres_per import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresPer as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMaxTresPer,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_associations_inner_min import (
+    V0041OpenapiSlurmdbdConfigRespAssociationsInnerMin as V0041OpenapiSlurmdbdConfigRespAssociationsInnerMin,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_instances_inner import (
+    V0041OpenapiSlurmdbdConfigRespInstancesInner as V0041OpenapiSlurmdbdConfigRespInstancesInner,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_config_resp_instances_inner_time import (
+    V0041OpenapiSlurmdbdConfigRespInstancesInnerTime as V0041OpenapiSlurmdbdConfigRespInstancesInnerTime,
+)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner import (
     V0041OpenapiSlurmdbdJobsRespJobsInner as V0041OpenapiSlurmdbdJobsRespJobsInner,
 )
@@ -1093,26 +1063,11 @@ from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_array_limit
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_array_limits_max_running import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerArrayLimitsMaxRunning as V0041OpenapiSlurmdbdJobsRespJobsInnerArrayLimitsMaxRunning,
 )
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_array_task_id import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerArrayTaskId as V0041OpenapiSlurmdbdJobsRespJobsInnerArrayTaskId,
-)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_association import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerAssociation as V0041OpenapiSlurmdbdJobsRespJobsInnerAssociation,
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_comment import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerComment as V0041OpenapiSlurmdbdJobsRespJobsInnerComment,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_derived_exit_code import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCode as V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCode,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_derived_exit_code_return_code import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeReturnCode as V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeReturnCode,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_derived_exit_code_signal import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeSignal as V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeSignal,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_derived_exit_code_signal_id import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeSignalId as V0041OpenapiSlurmdbdJobsRespJobsInnerDerivedExitCodeSignalId,
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_exit_code import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerExitCode as V0041OpenapiSlurmdbdJobsRespJobsInnerExitCode,
@@ -1120,23 +1075,11 @@ from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_exit_code i
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_het import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerHet as V0041OpenapiSlurmdbdJobsRespJobsInnerHet,
 )
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_het_job_offset import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerHetJobOffset as V0041OpenapiSlurmdbdJobsRespJobsInnerHetJobOffset,
-)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_mcs import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerMcs as V0041OpenapiSlurmdbdJobsRespJobsInnerMcs,
 )
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_priority import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerPriority as V0041OpenapiSlurmdbdJobsRespJobsInnerPriority,
-)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_required import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerRequired as V0041OpenapiSlurmdbdJobsRespJobsInnerRequired,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_required_memory_per_cpu import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu as V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_required_memory_per_node import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerNode as V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerNode,
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_reservation import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerReservation as V0041OpenapiSlurmdbdJobsRespJobsInnerReservation,
@@ -1213,9 +1156,6 @@ from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_steps_inner
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_time import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerTime as V0041OpenapiSlurmdbdJobsRespJobsInnerTime,
 )
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_time_limit import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit as V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit,
-)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_time_planned import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerTimePlanned as V0041OpenapiSlurmdbdJobsRespJobsInnerTimePlanned,
 )
@@ -1261,6 +1201,12 @@ from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_ac
 from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_active_jobs import (
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobs as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobs,
 )
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_active_jobs_accruing import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsAccruing as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsAccruing,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_active_jobs_count import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsCount as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxActiveJobsCount,
+)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_jobs import (
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxJobs as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxJobs,
 )
@@ -1303,8 +1249,17 @@ from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_wa
 from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_wall_clock_per import (
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPer as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPer,
 )
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_wall_clock_per_job import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerJob as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerJob,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_wall_clock_per_qos import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerQos as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerQos,
+)
 from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_min import (
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMin as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMin,
+)
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_min_priority_threshold import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinPriorityThreshold as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinPriorityThreshold,
 )
 from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_min_tres import (
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinTres as V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinTres,
@@ -1360,8 +1315,44 @@ from slurpy.v0041.models.v0041_openapi_slurmdbd_stats_resp_statistics_rollups_mo
 from slurpy.v0041.models.v0041_openapi_slurmdbd_stats_resp_statistics_users_inner import (
     V0041OpenapiSlurmdbdStatsRespStatisticsUsersInner as V0041OpenapiSlurmdbdStatsRespStatisticsUsersInner,
 )
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner as V0041OpenapiTresRespTRESInner,
+)
 from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition import (
     V0041OpenapiUsersAddCondRespAssociationCondition as V0041OpenapiUsersAddCondRespAssociationCondition,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociation as V0041OpenapiUsersAddCondRespAssociationConditionAssociation,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_grpjobs import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpjobs as V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpjobs,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_grpjobsaccrue import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpjobsaccrue as V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpjobsaccrue,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_grpsubmitjobs import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpsubmitjobs as V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpsubmitjobs,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_grpwall import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpwall as V0041OpenapiUsersAddCondRespAssociationConditionAssociationGrpwall,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_maxjobs import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxjobs as V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxjobs,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_maxjobsaccrue import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxjobsaccrue as V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxjobsaccrue,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_maxsubmitjobs import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxsubmitjobs as V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxsubmitjobs,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_maxwalldurationperjob import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxwalldurationperjob as V0041OpenapiUsersAddCondRespAssociationConditionAssociationMaxwalldurationperjob,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_minpriothresh import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationMinpriothresh as V0041OpenapiUsersAddCondRespAssociationConditionAssociationMinpriothresh,
+)
+from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_association_condition_association_priority import (
+    V0041OpenapiUsersAddCondRespAssociationConditionAssociationPriority as V0041OpenapiUsersAddCondRespAssociationConditionAssociationPriority,
 )
 from slurpy.v0041.models.v0041_openapi_users_add_cond_resp_user import (
     V0041OpenapiUsersAddCondRespUser as V0041OpenapiUsersAddCondRespUser,
@@ -1372,8 +1363,17 @@ from slurpy.v0041.models.v0041_openapi_users_resp_users_inner import (
 from slurpy.v0041.models.v0041_openapi_users_resp_users_inner_default import (
     V0041OpenapiUsersRespUsersInnerDefault as V0041OpenapiUsersRespUsersInnerDefault,
 )
-from slurpy.v0041.models.v0041_openapi_wckey_resp_wckeys_inner import (
-    V0041OpenapiWckeyRespWckeysInner as V0041OpenapiWckeyRespWckeysInner,
+from slurpy.v0041.models.v0041_openapi_users_resp_users_inner_wckeys_inner import (
+    V0041OpenapiUsersRespUsersInnerWckeysInner as V0041OpenapiUsersRespUsersInnerWckeysInner,
+)
+from slurpy.v0041.models.v0041_openapi_users_resp_users_inner_wckeys_inner_accounting_inner import (
+    V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInner as V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInner,
+)
+from slurpy.v0041.models.v0041_openapi_users_resp_users_inner_wckeys_inner_accounting_inner_allocated import (
+    V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInnerAllocated as V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInnerAllocated,
+)
+from slurpy.v0041.models.v0041_openapi_users_resp_users_inner_wckeys_inner_accounting_inner_tres import (
+    V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInnerTRES as V0041OpenapiUsersRespUsersInnerWckeysInnerAccountingInnerTRES,
 )
 from slurpy.v0041.models.v0041_update_node_msg_resume_after import (
     V0041UpdateNodeMsgResumeAfter as V0041UpdateNodeMsgResumeAfter,

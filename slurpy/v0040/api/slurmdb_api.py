@@ -68,7 +68,7 @@ class SlurmdbApi:
         self.api_client = api_client
 
     @validate_call
-    async def delete_account(
+    def delete_account(
         self,
         account_name: Annotated[StrictStr, Field(description="Account name")],
         _request_timeout: Union[
@@ -121,17 +121,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def delete_account_with_http_info(
+    def delete_account_with_http_info(
         self,
         account_name: Annotated[StrictStr, Field(description="Account name")],
         _request_timeout: Union[
@@ -184,17 +184,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def delete_account_without_preload_content(
+    def delete_account_without_preload_content(
         self,
         account_name: Annotated[StrictStr, Field(description="Account name")],
         _request_timeout: Union[
@@ -247,7 +247,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -284,7 +284,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -306,7 +306,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def delete_association(
+    def delete_association(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -460,17 +460,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def delete_association_with_http_info(
+    def delete_association_with_http_info(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -624,17 +624,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def delete_association_without_preload_content(
+    def delete_association_without_preload_content(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -788,7 +788,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -894,7 +894,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -916,7 +916,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def delete_associations(
+    def delete_associations(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -1070,17 +1070,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def delete_associations_with_http_info(
+    def delete_associations_with_http_info(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -1234,17 +1234,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def delete_associations_without_preload_content(
+    def delete_associations_without_preload_content(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -1398,7 +1398,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -1504,7 +1504,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -1526,7 +1526,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def delete_cluster(
+    def delete_cluster(
         self,
         cluster_name: Annotated[StrictStr, Field(description="Cluster name")],
         classification: Annotated[
@@ -1640,17 +1640,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIClustersRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def delete_cluster_with_http_info(
+    def delete_cluster_with_http_info(
         self,
         cluster_name: Annotated[StrictStr, Field(description="Cluster name")],
         classification: Annotated[
@@ -1764,17 +1764,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIClustersRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def delete_cluster_without_preload_content(
+    def delete_cluster_without_preload_content(
         self,
         cluster_name: Annotated[StrictStr, Field(description="Cluster name")],
         classification: Annotated[
@@ -1888,7 +1888,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIClustersRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -1965,7 +1965,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -1987,7 +1987,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def delete_single_qos(
+    def delete_single_qos(
         self,
         qos: Annotated[StrictStr, Field(description="QOS name")],
         _request_timeout: Union[
@@ -2040,17 +2040,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdQosRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def delete_single_qos_with_http_info(
+    def delete_single_qos_with_http_info(
         self,
         qos: Annotated[StrictStr, Field(description="QOS name")],
         _request_timeout: Union[
@@ -2103,17 +2103,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdQosRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def delete_single_qos_without_preload_content(
+    def delete_single_qos_without_preload_content(
         self,
         qos: Annotated[StrictStr, Field(description="QOS name")],
         _request_timeout: Union[
@@ -2166,7 +2166,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdQosRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -2203,7 +2203,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -2225,7 +2225,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def delete_user(
+    def delete_user(
         self,
         name: Annotated[StrictStr, Field(description="User name")],
         _request_timeout: Union[
@@ -2278,17 +2278,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def delete_user_with_http_info(
+    def delete_user_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="User name")],
         _request_timeout: Union[
@@ -2341,17 +2341,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def delete_user_without_preload_content(
+    def delete_user_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="User name")],
         _request_timeout: Union[
@@ -2404,7 +2404,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -2441,7 +2441,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -2463,7 +2463,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def delete_wckey(
+    def delete_wckey(
         self,
         id: Annotated[StrictStr, Field(description="wckey id")],
         _request_timeout: Union[
@@ -2516,17 +2516,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIWckeyRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def delete_wckey_with_http_info(
+    def delete_wckey_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="wckey id")],
         _request_timeout: Union[
@@ -2579,17 +2579,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIWckeyRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def delete_wckey_without_preload_content(
+    def delete_wckey_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="wckey id")],
         _request_timeout: Union[
@@ -2642,7 +2642,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIWckeyRemovedResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -2679,7 +2679,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -2701,7 +2701,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_account(
+    def get_account(
         self,
         account_name: Annotated[StrictStr, Field(description="Account name")],
         with_assocs: Annotated[
@@ -2772,17 +2772,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_account_with_http_info(
+    def get_account_with_http_info(
         self,
         account_name: Annotated[StrictStr, Field(description="Account name")],
         with_assocs: Annotated[
@@ -2853,17 +2853,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_account_without_preload_content(
+    def get_account_without_preload_content(
         self,
         account_name: Annotated[StrictStr, Field(description="Account name")],
         with_assocs: Annotated[
@@ -2934,7 +2934,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -2983,7 +2983,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -3005,7 +3005,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_accounts(
+    def get_accounts(
         self,
         description: Annotated[
             Optional[StrictStr], Field(description="CSV description list")
@@ -3078,17 +3078,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_accounts_with_http_info(
+    def get_accounts_with_http_info(
         self,
         description: Annotated[
             Optional[StrictStr], Field(description="CSV description list")
@@ -3161,17 +3161,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_accounts_without_preload_content(
+    def get_accounts_without_preload_content(
         self,
         description: Annotated[
             Optional[StrictStr], Field(description="CSV description list")
@@ -3244,7 +3244,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -3294,7 +3294,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -3316,7 +3316,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_association(
+    def get_association(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -3470,17 +3470,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_association_with_http_info(
+    def get_association_with_http_info(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -3634,17 +3634,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_association_without_preload_content(
+    def get_association_without_preload_content(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -3798,7 +3798,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -3904,7 +3904,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -3926,7 +3926,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_associations(
+    def get_associations(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -4080,17 +4080,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_associations_with_http_info(
+    def get_associations_with_http_info(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -4244,17 +4244,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_associations_without_preload_content(
+    def get_associations_without_preload_content(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV accounts list")
@@ -4408,7 +4408,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAssocsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -4514,7 +4514,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -4536,7 +4536,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_cluster(
+    def get_cluster(
         self,
         cluster_name: Annotated[StrictStr, Field(description="Cluster name")],
         classification: Annotated[
@@ -4650,17 +4650,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIClustersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_cluster_with_http_info(
+    def get_cluster_with_http_info(
         self,
         cluster_name: Annotated[StrictStr, Field(description="Cluster name")],
         classification: Annotated[
@@ -4774,17 +4774,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIClustersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_cluster_without_preload_content(
+    def get_cluster_without_preload_content(
         self,
         cluster_name: Annotated[StrictStr, Field(description="Cluster name")],
         classification: Annotated[
@@ -4898,7 +4898,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIClustersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -4975,7 +4975,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -4997,7 +4997,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_clusters(
+    def get_clusters(
         self,
         update_time: Annotated[
             Optional[StrictStr],
@@ -5053,17 +5053,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIClustersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_clusters_with_http_info(
+    def get_clusters_with_http_info(
         self,
         update_time: Annotated[
             Optional[StrictStr],
@@ -5119,17 +5119,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIClustersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_clusters_without_preload_content(
+    def get_clusters_without_preload_content(
         self,
         update_time: Annotated[
             Optional[StrictStr],
@@ -5185,7 +5185,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIClustersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -5223,7 +5223,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -5245,7 +5245,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_config(
+    def get_config(
         self,
         _request_timeout: Union[
             None,
@@ -5294,17 +5294,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdConfigResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_config_with_http_info(
+    def get_config_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -5353,17 +5353,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdConfigResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_config_without_preload_content(
+    def get_config_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -5412,7 +5412,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdConfigResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -5446,7 +5446,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -5468,7 +5468,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_diag(
+    def get_diag(
         self,
         _request_timeout: Union[
             None,
@@ -5517,17 +5517,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdStatsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_diag_with_http_info(
+    def get_diag_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -5576,17 +5576,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdStatsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_diag_without_preload_content(
+    def get_diag_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -5635,7 +5635,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdStatsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -5669,7 +5669,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -5691,7 +5691,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_instance(
+    def get_instance(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV clusters list")
@@ -5791,17 +5791,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIInstancesResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_instance_with_http_info(
+    def get_instance_with_http_info(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV clusters list")
@@ -5901,17 +5901,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIInstancesResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_instance_without_preload_content(
+    def get_instance_without_preload_content(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV clusters list")
@@ -6011,7 +6011,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIInstancesResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -6077,7 +6077,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -6099,7 +6099,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_instances(
+    def get_instances(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV clusters list")
@@ -6199,17 +6199,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIInstancesResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_instances_with_http_info(
+    def get_instances_with_http_info(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV clusters list")
@@ -6309,17 +6309,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIInstancesResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_instances_without_preload_content(
+    def get_instances_without_preload_content(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV clusters list")
@@ -6419,7 +6419,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIInstancesResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -6485,7 +6485,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -6507,7 +6507,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_job(
+    def get_job(
         self,
         job_id: Annotated[StrictStr, Field(description="Job id")],
         _request_timeout: Union[
@@ -6561,17 +6561,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdJobsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_job_with_http_info(
+    def get_job_with_http_info(
         self,
         job_id: Annotated[StrictStr, Field(description="Job id")],
         _request_timeout: Union[
@@ -6625,17 +6625,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdJobsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_job_without_preload_content(
+    def get_job_without_preload_content(
         self,
         job_id: Annotated[StrictStr, Field(description="Job id")],
         _request_timeout: Union[
@@ -6689,7 +6689,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdJobsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -6726,7 +6726,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -6748,7 +6748,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_jobs(
+    def get_jobs(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV account list")
@@ -7052,17 +7052,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdJobsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_jobs_with_http_info(
+    def get_jobs_with_http_info(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV account list")
@@ -7366,17 +7366,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdJobsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_jobs_without_preload_content(
+    def get_jobs_without_preload_content(
         self,
         account: Annotated[
             Optional[StrictStr], Field(description="CSV account list")
@@ -7680,7 +7680,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdJobsResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -7882,7 +7882,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -7904,7 +7904,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_qos(
+    def get_qos(
         self,
         description: Annotated[
             Optional[StrictStr], Field(description="CSV description list")
@@ -7991,17 +7991,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdQosResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_qos_with_http_info(
+    def get_qos_with_http_info(
         self,
         description: Annotated[
             Optional[StrictStr], Field(description="CSV description list")
@@ -8088,17 +8088,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdQosResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_qos_without_preload_content(
+    def get_qos_without_preload_content(
         self,
         description: Annotated[
             Optional[StrictStr], Field(description="CSV description list")
@@ -8185,7 +8185,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdQosResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -8243,7 +8243,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -8265,7 +8265,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_single_qos(
+    def get_single_qos(
         self,
         qos: Annotated[StrictStr, Field(description="QOS name")],
         with_deleted: Annotated[
@@ -8324,17 +8324,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdQosResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_single_qos_with_http_info(
+    def get_single_qos_with_http_info(
         self,
         qos: Annotated[StrictStr, Field(description="QOS name")],
         with_deleted: Annotated[
@@ -8393,17 +8393,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdQosResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_single_qos_without_preload_content(
+    def get_single_qos_without_preload_content(
         self,
         qos: Annotated[StrictStr, Field(description="QOS name")],
         with_deleted: Annotated[
@@ -8462,7 +8462,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPISlurmdbdQosResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -8503,7 +8503,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -8525,7 +8525,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_tres(
+    def get_tres(
         self,
         _request_timeout: Union[
             None,
@@ -8574,17 +8574,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPITresResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_tres_with_http_info(
+    def get_tres_with_http_info(
         self,
         _request_timeout: Union[
             None,
@@ -8633,17 +8633,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPITresResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_tres_without_preload_content(
+    def get_tres_without_preload_content(
         self,
         _request_timeout: Union[
             None,
@@ -8692,7 +8692,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPITresResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -8726,7 +8726,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -8748,7 +8748,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_user(
+    def get_user(
         self,
         name: Annotated[StrictStr, Field(description="User name")],
         with_deleted: Annotated[
@@ -8825,17 +8825,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIUsersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_user_with_http_info(
+    def get_user_with_http_info(
         self,
         name: Annotated[StrictStr, Field(description="User name")],
         with_deleted: Annotated[
@@ -8912,17 +8912,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIUsersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_user_without_preload_content(
+    def get_user_without_preload_content(
         self,
         name: Annotated[StrictStr, Field(description="User name")],
         with_deleted: Annotated[
@@ -8999,7 +8999,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIUsersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -9052,7 +9052,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -9074,7 +9074,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_users(
+    def get_users(
         self,
         admin_level: Annotated[
             Optional[StrictStr], Field(description="Administrator level")
@@ -9171,17 +9171,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIUsersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_users_with_http_info(
+    def get_users_with_http_info(
         self,
         admin_level: Annotated[
             Optional[StrictStr], Field(description="Administrator level")
@@ -9278,17 +9278,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIUsersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_users_without_preload_content(
+    def get_users_without_preload_content(
         self,
         admin_level: Annotated[
             Optional[StrictStr], Field(description="Administrator level")
@@ -9385,7 +9385,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIUsersResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -9451,7 +9451,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -9473,7 +9473,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_wckey(
+    def get_wckey(
         self,
         id: Annotated[StrictStr, Field(description="wckey id")],
         _request_timeout: Union[
@@ -9526,17 +9526,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIWckeyResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_wckey_with_http_info(
+    def get_wckey_with_http_info(
         self,
         id: Annotated[StrictStr, Field(description="wckey id")],
         _request_timeout: Union[
@@ -9589,17 +9589,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIWckeyResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_wckey_without_preload_content(
+    def get_wckey_without_preload_content(
         self,
         id: Annotated[StrictStr, Field(description="wckey id")],
         _request_timeout: Union[
@@ -9652,7 +9652,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIWckeyResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -9689,7 +9689,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -9711,7 +9711,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def get_wckeys(
+    def get_wckeys(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV cluster name list")
@@ -9817,17 +9817,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIWckeyResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def get_wckeys_with_http_info(
+    def get_wckeys_with_http_info(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV cluster name list")
@@ -9933,17 +9933,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIWckeyResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def get_wckeys_without_preload_content(
+    def get_wckeys_without_preload_content(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV cluster name list")
@@ -10049,7 +10049,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIWckeyResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -10123,7 +10123,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # authentication setting
@@ -10145,7 +10145,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_accounts(
+    def post_accounts(
         self,
         open_api_accounts_resp: Annotated[
             Optional[OpenAPIAccountsResp],
@@ -10201,17 +10201,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_accounts_with_http_info(
+    def post_accounts_with_http_info(
         self,
         open_api_accounts_resp: Annotated[
             Optional[OpenAPIAccountsResp],
@@ -10267,17 +10267,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_accounts_without_preload_content(
+    def post_accounts_without_preload_content(
         self,
         open_api_accounts_resp: Annotated[
             Optional[OpenAPIAccountsResp],
@@ -10333,7 +10333,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -10370,7 +10370,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -10378,7 +10378,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type
@@ -10402,7 +10402,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_accounts_association(
+    def post_accounts_association(
         self,
         open_api_accounts_add_cond_resp: Annotated[
             Optional[OpenAPIAccountsAddCondResp],
@@ -10458,17 +10458,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsAddCondRespStr",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_accounts_association_with_http_info(
+    def post_accounts_association_with_http_info(
         self,
         open_api_accounts_add_cond_resp: Annotated[
             Optional[OpenAPIAccountsAddCondResp],
@@ -10524,17 +10524,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsAddCondRespStr",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_accounts_association_without_preload_content(
+    def post_accounts_association_without_preload_content(
         self,
         open_api_accounts_add_cond_resp: Annotated[
             Optional[OpenAPIAccountsAddCondResp],
@@ -10590,7 +10590,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIAccountsAddCondRespStr",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -10627,7 +10627,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -10635,7 +10635,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type
@@ -10659,7 +10659,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_associations(
+    def post_associations(
         self,
         open_api_assocs_resp: Annotated[
             Optional[OpenAPIAssocsResp], Field(description="Job description")
@@ -10714,17 +10714,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_associations_with_http_info(
+    def post_associations_with_http_info(
         self,
         open_api_assocs_resp: Annotated[
             Optional[OpenAPIAssocsResp], Field(description="Job description")
@@ -10779,17 +10779,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_associations_without_preload_content(
+    def post_associations_without_preload_content(
         self,
         open_api_assocs_resp: Annotated[
             Optional[OpenAPIAssocsResp], Field(description="Job description")
@@ -10844,7 +10844,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -10881,7 +10881,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -10889,7 +10889,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type
@@ -10913,7 +10913,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_clusters(
+    def post_clusters(
         self,
         update_time: Annotated[
             Optional[StrictStr],
@@ -10976,17 +10976,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_clusters_with_http_info(
+    def post_clusters_with_http_info(
         self,
         update_time: Annotated[
             Optional[StrictStr],
@@ -11049,17 +11049,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_clusters_without_preload_content(
+    def post_clusters_without_preload_content(
         self,
         update_time: Annotated[
             Optional[StrictStr],
@@ -11122,7 +11122,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -11163,7 +11163,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -11171,7 +11171,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type
@@ -11195,7 +11195,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_config(
+    def post_config(
         self,
         open_api_slurmdbd_config_resp: Annotated[
             Optional[OpenAPISlurmdbdConfigResp],
@@ -11251,17 +11251,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_config_with_http_info(
+    def post_config_with_http_info(
         self,
         open_api_slurmdbd_config_resp: Annotated[
             Optional[OpenAPISlurmdbdConfigResp],
@@ -11317,17 +11317,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_config_without_preload_content(
+    def post_config_without_preload_content(
         self,
         open_api_slurmdbd_config_resp: Annotated[
             Optional[OpenAPISlurmdbdConfigResp],
@@ -11383,7 +11383,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -11420,7 +11420,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -11428,7 +11428,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type
@@ -11452,7 +11452,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_qos(
+    def post_qos(
         self,
         description: Annotated[
             Optional[StrictStr], Field(description="CSV description list")
@@ -11546,17 +11546,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_qos_with_http_info(
+    def post_qos_with_http_info(
         self,
         description: Annotated[
             Optional[StrictStr], Field(description="CSV description list")
@@ -11650,17 +11650,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_qos_without_preload_content(
+    def post_qos_without_preload_content(
         self,
         description: Annotated[
             Optional[StrictStr], Field(description="CSV description list")
@@ -11754,7 +11754,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -11815,7 +11815,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -11823,7 +11823,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type
@@ -11847,7 +11847,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_tres(
+    def post_tres(
         self,
         open_api_tres_resp: Annotated[
             Optional[OpenAPITresResp],
@@ -11903,17 +11903,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_tres_with_http_info(
+    def post_tres_with_http_info(
         self,
         open_api_tres_resp: Annotated[
             Optional[OpenAPITresResp],
@@ -11969,17 +11969,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_tres_without_preload_content(
+    def post_tres_without_preload_content(
         self,
         open_api_tres_resp: Annotated[
             Optional[OpenAPITresResp],
@@ -12035,7 +12035,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -12072,7 +12072,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -12080,7 +12080,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type
@@ -12104,7 +12104,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_users(
+    def post_users(
         self,
         open_api_users_resp: Annotated[
             Optional[OpenAPIUsersResp], Field(description="add or update user")
@@ -12159,17 +12159,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_users_with_http_info(
+    def post_users_with_http_info(
         self,
         open_api_users_resp: Annotated[
             Optional[OpenAPIUsersResp], Field(description="add or update user")
@@ -12224,17 +12224,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_users_without_preload_content(
+    def post_users_without_preload_content(
         self,
         open_api_users_resp: Annotated[
             Optional[OpenAPIUsersResp], Field(description="add or update user")
@@ -12289,7 +12289,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -12326,7 +12326,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -12334,7 +12334,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type
@@ -12358,7 +12358,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_users_association(
+    def post_users_association(
         self,
         update_time: Annotated[
             Optional[StrictStr],
@@ -12425,17 +12425,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIUsersAddCondRespStr",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_users_association_with_http_info(
+    def post_users_association_with_http_info(
         self,
         update_time: Annotated[
             Optional[StrictStr],
@@ -12502,17 +12502,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIUsersAddCondRespStr",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_users_association_without_preload_content(
+    def post_users_association_without_preload_content(
         self,
         update_time: Annotated[
             Optional[StrictStr],
@@ -12579,7 +12579,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIUsersAddCondRespStr",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -12624,7 +12624,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -12632,7 +12632,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type
@@ -12656,7 +12656,7 @@ class SlurmdbApi:
         )
 
     @validate_call
-    async def post_wckeys(
+    def post_wckeys(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV cluster name list")
@@ -12768,17 +12768,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         ).data
 
     @validate_call
-    async def post_wckeys_with_http_info(
+    def post_wckeys_with_http_info(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV cluster name list")
@@ -12890,17 +12890,17 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
-        await response_data.read()
+        response_data.read()
         return self.api_client.response_deserialize(
             response_data=response_data,
             response_types_map=_response_types_map,
         )
 
     @validate_call
-    async def post_wckeys_without_preload_content(
+    def post_wckeys_without_preload_content(
         self,
         cluster: Annotated[
             Optional[StrictStr], Field(description="CSV cluster name list")
@@ -13012,7 +13012,7 @@ class SlurmdbApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": "OpenAPIResp",
         }
-        response_data = await self.api_client.call_api(
+        response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
         return response_data.response
@@ -13089,7 +13089,7 @@ class SlurmdbApi:
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
             _header_params["Accept"] = self.api_client.select_header_accept(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
 
         # set the HTTP header `Content-Type`
@@ -13097,7 +13097,7 @@ class SlurmdbApi:
             _header_params["Content-Type"] = _content_type
         else:
             _default_content_type = self.api_client.select_header_content_type(
-                ["application/yaml", "application/json"]
+                ["application/json", "application/yaml"]
             )
             if _default_content_type is not None:
                 _header_params["Content-Type"] = _default_content_type

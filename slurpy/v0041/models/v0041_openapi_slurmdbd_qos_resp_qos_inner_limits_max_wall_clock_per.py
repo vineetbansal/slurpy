@@ -19,11 +19,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_jobs_per_wall_clock import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerWallClock,
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_wall_clock_per_job import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerJob,
 )
-from slurpy.v0041.models.v0041_openapi_assocs_resp_associations_inner_max_per_account_wall_clock import (
-    V0041OpenapiAssocsRespAssociationsInnerMaxPerAccountWallClock,
+from slurpy.v0041.models.v0041_openapi_slurmdbd_qos_resp_qos_inner_limits_max_wall_clock_per_qos import (
+    V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerQos,
 )
 from typing import Set
 from typing_extensions import Self
@@ -34,8 +34,8 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPer(BaseModel):
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPer
     """  # noqa: E501
 
-    qos: Optional[V0041OpenapiAssocsRespAssociationsInnerMaxPerAccountWallClock] = None
-    job: Optional[V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerWallClock] = None
+    qos: Optional[V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerQos] = None
+    job: Optional[V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerJob] = None
     __properties: ClassVar[List[str]] = ["qos", "job"]
 
     model_config = ConfigDict(
@@ -94,12 +94,12 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPer(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "qos": V0041OpenapiAssocsRespAssociationsInnerMaxPerAccountWallClock.from_dict(
+                "qos": V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerQos.from_dict(
                     obj["qos"]
                 )
                 if obj.get("qos") is not None
                 else None,
-                "job": V0041OpenapiAssocsRespAssociationsInnerMaxJobsPerWallClock.from_dict(
+                "job": V0041OpenapiSlurmdbdQosRespQosInnerLimitsMaxWallClockPerJob.from_dict(
                     obj["job"]
                 )
                 if obj.get("job") is not None

@@ -17,261 +17,261 @@ import unittest
 from slurpy.v0041.api.slurmdb_api import SlurmdbApi
 
 
-class TestSlurmdbApi(unittest.IsolatedAsyncioTestCase):
+class TestSlurmdbApi(unittest.TestCase):
     """SlurmdbApi unit test stubs"""
 
-    async def asyncSetUp(self) -> None:
+    def setUp(self) -> None:
         self.api = SlurmdbApi()
 
-    async def asyncTearDown(self) -> None:
-        await self.api.api_client.close()
+    def tearDown(self) -> None:
+        pass
 
-    async def test_delete_account(self) -> None:
+    def test_delete_account(self) -> None:
         """Test case for delete_account
 
         Delete account
         """
         pass
 
-    async def test_delete_association(self) -> None:
+    def test_delete_association(self) -> None:
         """Test case for delete_association
 
         Delete association
         """
         pass
 
-    async def test_delete_associations(self) -> None:
+    def test_delete_associations(self) -> None:
         """Test case for delete_associations
 
         Delete associations
         """
         pass
 
-    async def test_delete_cluster(self) -> None:
+    def test_delete_cluster(self) -> None:
         """Test case for delete_cluster
 
         Delete cluster
         """
         pass
 
-    async def test_delete_single_qos(self) -> None:
+    def test_delete_single_qos(self) -> None:
         """Test case for delete_single_qos
 
         Delete QOS
         """
         pass
 
-    async def test_delete_user(self) -> None:
+    def test_delete_user(self) -> None:
         """Test case for delete_user
 
         Delete user
         """
         pass
 
-    async def test_delete_wckey(self) -> None:
+    def test_delete_wckey(self) -> None:
         """Test case for delete_wckey
 
         Delete wckey
         """
         pass
 
-    async def test_get_account(self) -> None:
+    def test_get_account(self) -> None:
         """Test case for get_account
 
         Get account info
         """
         pass
 
-    async def test_get_accounts(self) -> None:
+    def test_get_accounts(self) -> None:
         """Test case for get_accounts
 
         Get account list
         """
         pass
 
-    async def test_get_association(self) -> None:
+    def test_get_association(self) -> None:
         """Test case for get_association
 
         Get association info
         """
         pass
 
-    async def test_get_associations(self) -> None:
+    def test_get_associations(self) -> None:
         """Test case for get_associations
 
         Get association list
         """
         pass
 
-    async def test_get_cluster(self) -> None:
+    def test_get_cluster(self) -> None:
         """Test case for get_cluster
 
         Get cluster info
         """
         pass
 
-    async def test_get_clusters(self) -> None:
+    def test_get_clusters(self) -> None:
         """Test case for get_clusters
 
         Get cluster list
         """
         pass
 
-    async def test_get_config(self) -> None:
+    def test_get_config(self) -> None:
         """Test case for get_config
 
         Dump all configuration information
         """
         pass
 
-    async def test_get_diag(self) -> None:
+    def test_get_diag(self) -> None:
         """Test case for get_diag
 
         Get slurmdb diagnostics
         """
         pass
 
-    async def test_get_instance(self) -> None:
+    def test_get_instance(self) -> None:
         """Test case for get_instance
 
         Get instance info
         """
         pass
 
-    async def test_get_instances(self) -> None:
+    def test_get_instances(self) -> None:
         """Test case for get_instances
 
         Get instance list
         """
         pass
 
-    async def test_get_job(self) -> None:
+    def test_get_job(self) -> None:
         """Test case for get_job
 
         Get job info
         """
         pass
 
-    async def test_get_jobs(self) -> None:
+    def test_get_jobs(self) -> None:
         """Test case for get_jobs
 
         Get job list
         """
         pass
 
-    async def test_get_qos(self) -> None:
+    def test_get_qos(self) -> None:
         """Test case for get_qos
 
         Get QOS list
         """
         pass
 
-    async def test_get_single_qos(self) -> None:
+    def test_get_single_qos(self) -> None:
         """Test case for get_single_qos
 
         Get QOS info
         """
         pass
 
-    async def test_get_tres(self) -> None:
+    def test_get_tres(self) -> None:
         """Test case for get_tres
 
         Get TRES info
         """
         pass
 
-    async def test_get_user(self) -> None:
+    def test_get_user(self) -> None:
         """Test case for get_user
 
         Get user info
         """
         pass
 
-    async def test_get_users(self) -> None:
+    def test_get_users(self) -> None:
         """Test case for get_users
 
         Get user list
         """
         pass
 
-    async def test_get_wckey(self) -> None:
+    def test_get_wckey(self) -> None:
         """Test case for get_wckey
 
         Get wckey info
         """
         pass
 
-    async def test_get_wckeys(self) -> None:
+    def test_get_wckeys(self) -> None:
         """Test case for get_wckeys
 
         Get wckey list
         """
         pass
 
-    async def test_post_accounts(self) -> None:
+    def test_post_accounts(self) -> None:
         """Test case for post_accounts
 
         Add/update list of accounts
         """
         pass
 
-    async def test_post_accounts_association(self) -> None:
+    def test_post_accounts_association(self) -> None:
         """Test case for post_accounts_association
 
         Add accounts with conditional association
         """
         pass
 
-    async def test_post_associations(self) -> None:
+    def test_post_associations(self) -> None:
         """Test case for post_associations
 
         Set associations info
         """
         pass
 
-    async def test_post_clusters(self) -> None:
+    def test_post_clusters(self) -> None:
         """Test case for post_clusters
 
         Get cluster list
         """
         pass
 
-    async def test_post_config(self) -> None:
+    def test_post_config(self) -> None:
         """Test case for post_config
 
         Load all configuration information
         """
         pass
 
-    async def test_post_qos(self) -> None:
+    def test_post_qos(self) -> None:
         """Test case for post_qos
 
         Add or update QOSs
         """
         pass
 
-    async def test_post_tres(self) -> None:
+    def test_post_tres(self) -> None:
         """Test case for post_tres
 
         Add TRES
         """
         pass
 
-    async def test_post_users(self) -> None:
+    def test_post_users(self) -> None:
         """Test case for post_users
 
         Update users
         """
         pass
 
-    async def test_post_users_association(self) -> None:
+    def test_post_users_association(self) -> None:
         """Test case for post_users_association
 
         Add users with conditional association
         """
         pass
 
-    async def test_post_wckeys(self) -> None:
+    def test_post_wckeys(self) -> None:
         """Test case for post_wckeys
 
         Add or update wckeys

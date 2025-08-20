@@ -120,9 +120,6 @@ from slurpy.v0040.models.v0040_assoc_max_per_account import V0040AssocMaxPerAcco
 from slurpy.v0040.models.v0040_assoc_max_tres import V0040AssocMaxTres
 from slurpy.v0040.models.v0040_assoc_max_tres_group import V0040AssocMaxTresGroup
 from slurpy.v0040.models.v0040_assoc_max_tres_minutes import V0040AssocMaxTresMinutes
-from slurpy.v0040.models.v0040_assoc_max_tres_minutes_per import (
-    V0040AssocMaxTresMinutesPer,
-)
 from slurpy.v0040.models.v0040_assoc_max_tres_per import V0040AssocMaxTresPer
 from slurpy.v0040.models.v0040_assoc_min import V0040AssocMin
 from slurpy.v0040.models.v0040_assoc_shares_obj_wrap_fairshare import (
@@ -214,6 +211,7 @@ from slurpy.v0040.models.v0040_qos_limits_max_wall_clock_per import (
 )
 from slurpy.v0040.models.v0040_qos_limits_min import V0040QosLimitsMin
 from slurpy.v0040.models.v0040_qos_limits_min_tres import V0040QosLimitsMinTres
+from slurpy.v0040.models.v0040_qos_limits_min_tres_per import V0040QosLimitsMinTresPer
 from slurpy.v0040.models.v0040_qos_preempt import V0040QosPreempt
 from slurpy.v0040.models.v0040_reservation_info_purge_completed import (
     V0040ReservationInfoPurgeCompleted,
@@ -225,7 +223,7 @@ from slurpy.v0040.models.v0040_stats_msg_rpcs_by_type_inner import (
 from slurpy.v0040.models.v0040_stats_msg_rpcs_by_user_inner import (
     V0040StatsMsgRpcsByUserInner,
 )
-from slurpy.v0040.models.v0040_stats_user_time import V0040StatsUserTime
+from slurpy.v0040.models.v0040_stats_rpc_time import V0040StatsRpcTime
 from slurpy.v0040.models.v0040_step_cpu import V0040StepCPU
 from slurpy.v0040.models.v0040_step_cpu_requested_frequency import (
     V0040StepCPURequestedFrequency,

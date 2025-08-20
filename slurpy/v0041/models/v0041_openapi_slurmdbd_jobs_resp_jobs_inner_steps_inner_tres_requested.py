@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grptres_inner import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner,
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -31,18 +31,18 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTresRequested(BaseModel):
     V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTresRequested
     """  # noqa: E501
 
-    max: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="Maximum TRES usage requested among all tasks")
-    min: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="Minimum TRES usage requested among all tasks")
-    average: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="Average TRES usage requested among all tasks")
-    total: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="Total TRES usage requested among all tasks")
+    max: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="Maximum TRES usage requested among all tasks"
+    )
+    min: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="Minimum TRES usage requested among all tasks"
+    )
+    average: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="Average TRES usage requested among all tasks"
+    )
+    total: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="Total TRES usage requested among all tasks"
+    )
     __properties: ClassVar[List[str]] = ["max", "min", "average", "total"]
 
     model_config = ConfigDict(
@@ -124,33 +124,25 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerStepsInnerTresRequested(BaseModel):
         _obj = cls.model_validate(
             {
                 "max": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["max"]
                 ]
                 if obj.get("max") is not None
                 else None,
                 "min": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["min"]
                 ]
                 if obj.get("min") is not None
                 else None,
                 "average": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["average"]
                 ]
                 if obj.get("average") is not None
                 else None,
                 "total": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["total"]
                 ]
                 if obj.get("total") is not None

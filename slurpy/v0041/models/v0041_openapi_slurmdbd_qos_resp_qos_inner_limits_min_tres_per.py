@@ -19,8 +19,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grptres_inner import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner,
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -31,9 +31,9 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinTresPer(BaseModel):
     V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinTresPer
     """  # noqa: E501
 
-    job: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="MinTRES")
+    job: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="MinTRES"
+    )
     __properties: ClassVar[List[str]] = ["job"]
 
     model_config = ConfigDict(
@@ -94,9 +94,7 @@ class V0041OpenapiSlurmdbdQosRespQosInnerLimitsMinTresPer(BaseModel):
         _obj = cls.model_validate(
             {
                 "job": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["job"]
                 ]
                 if obj.get("job") is not None

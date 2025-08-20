@@ -88,14 +88,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     account_name = 'account_name_example' # str | Account name
 
     try:
         # Delete account
-        api_response = await api_instance.delete_account(account_name)
+        api_response = api_instance.delete_account(account_name)
         print("The response of SlurmdbApi->delete_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -179,7 +179,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     account = 'account_example' # str | CSV accounts list (optional)
@@ -203,7 +203,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Delete association
-        api_response = await api_instance.delete_association(account=account, cluster=cluster, default_qos=default_qos, format=format, id=id, only_defaults=only_defaults, parent_account=parent_account, partition=partition, qos=qos, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, with_raw_qos=with_raw_qos, with_sub_accts=with_sub_accts, without_parent_info=without_parent_info, without_parent_limits=without_parent_limits)
+        api_response = api_instance.delete_association(account=account, cluster=cluster, default_qos=default_qos, format=format, id=id, only_defaults=only_defaults, parent_account=parent_account, partition=partition, qos=qos, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, with_raw_qos=with_raw_qos, with_sub_accts=with_sub_accts, without_parent_info=without_parent_info, without_parent_limits=without_parent_limits)
         print("The response of SlurmdbApi->delete_association:\n")
         pprint(api_response)
     except Exception as e:
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -304,7 +304,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     account = 'account_example' # str | CSV accounts list (optional)
@@ -328,7 +328,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Delete associations
-        api_response = await api_instance.delete_associations(account=account, cluster=cluster, default_qos=default_qos, format=format, id=id, only_defaults=only_defaults, parent_account=parent_account, partition=partition, qos=qos, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, with_raw_qos=with_raw_qos, with_sub_accts=with_sub_accts, without_parent_info=without_parent_info, without_parent_limits=without_parent_limits)
+        api_response = api_instance.delete_associations(account=account, cluster=cluster, default_qos=default_qos, format=format, id=id, only_defaults=only_defaults, parent_account=parent_account, partition=partition, qos=qos, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, with_raw_qos=with_raw_qos, with_sub_accts=with_sub_accts, without_parent_info=without_parent_info, without_parent_limits=without_parent_limits)
         print("The response of SlurmdbApi->delete_associations:\n")
         pprint(api_response)
     except Exception as e:
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -429,7 +429,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     cluster_name = 'cluster_name_example' # str | Cluster name
@@ -446,7 +446,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Delete cluster
-        api_response = await api_instance.delete_cluster(cluster_name, classification=classification, cluster=cluster, federation=federation, flags=flags, format=format, rpc_version=rpc_version, usage_end=usage_end, usage_start=usage_start, with_deleted=with_deleted, with_usage=with_usage)
+        api_response = api_instance.delete_cluster(cluster_name, classification=classification, cluster=cluster, federation=federation, flags=flags, format=format, rpc_version=rpc_version, usage_end=usage_end, usage_start=usage_start, with_deleted=with_deleted, with_usage=with_usage)
         print("The response of SlurmdbApi->delete_cluster:\n")
         pprint(api_response)
     except Exception as e:
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -540,14 +540,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     qos = 'qos_example' # str | QOS name
 
     try:
         # Delete QOS
-        api_response = await api_instance.delete_single_qos(qos)
+        api_response = api_instance.delete_single_qos(qos)
         print("The response of SlurmdbApi->delete_single_qos:\n")
         pprint(api_response)
     except Exception as e:
@@ -574,7 +574,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -631,14 +631,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     name = 'name_example' # str | User name
 
     try:
         # Delete user
-        api_response = await api_instance.delete_user(name)
+        api_response = api_instance.delete_user(name)
         print("The response of SlurmdbApi->delete_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -665,7 +665,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -722,14 +722,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     id = 'id_example' # str | wckey id
 
     try:
         # Delete wckey
-        api_response = await api_instance.delete_wckey(id)
+        api_response = api_instance.delete_wckey(id)
         print("The response of SlurmdbApi->delete_wckey:\n")
         pprint(api_response)
     except Exception as e:
@@ -756,7 +756,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -813,7 +813,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     account_name = 'account_name_example' # str | Account name
@@ -823,7 +823,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get account info
-        api_response = await api_instance.get_account(account_name, with_assocs=with_assocs, with_coords=with_coords, with_deleted=with_deleted)
+        api_response = api_instance.get_account(account_name, with_assocs=with_assocs, with_coords=with_coords, with_deleted=with_deleted)
         print("The response of SlurmdbApi->get_account:\n")
         pprint(api_response)
     except Exception as e:
@@ -853,7 +853,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -910,7 +910,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     description = 'description_example' # str | CSV description list (optional)
@@ -920,7 +920,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get account list
-        api_response = await api_instance.get_accounts(description=description, with_assocs=with_assocs, with_coords=with_coords, with_deleted=with_deleted)
+        api_response = api_instance.get_accounts(description=description, with_assocs=with_assocs, with_coords=with_coords, with_deleted=with_deleted)
         print("The response of SlurmdbApi->get_accounts:\n")
         pprint(api_response)
     except Exception as e:
@@ -950,7 +950,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1007,7 +1007,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     account = 'account_example' # str | CSV accounts list (optional)
@@ -1031,7 +1031,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get association info
-        api_response = await api_instance.get_association(account=account, cluster=cluster, default_qos=default_qos, format=format, id=id, only_defaults=only_defaults, parent_account=parent_account, partition=partition, qos=qos, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, with_raw_qos=with_raw_qos, with_sub_accts=with_sub_accts, without_parent_info=without_parent_info, without_parent_limits=without_parent_limits)
+        api_response = api_instance.get_association(account=account, cluster=cluster, default_qos=default_qos, format=format, id=id, only_defaults=only_defaults, parent_account=parent_account, partition=partition, qos=qos, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, with_raw_qos=with_raw_qos, with_sub_accts=with_sub_accts, without_parent_info=without_parent_info, without_parent_limits=without_parent_limits)
         print("The response of SlurmdbApi->get_association:\n")
         pprint(api_response)
     except Exception as e:
@@ -1075,7 +1075,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1132,7 +1132,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     account = 'account_example' # str | CSV accounts list (optional)
@@ -1156,7 +1156,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get association list
-        api_response = await api_instance.get_associations(account=account, cluster=cluster, default_qos=default_qos, format=format, id=id, only_defaults=only_defaults, parent_account=parent_account, partition=partition, qos=qos, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, with_raw_qos=with_raw_qos, with_sub_accts=with_sub_accts, without_parent_info=without_parent_info, without_parent_limits=without_parent_limits)
+        api_response = api_instance.get_associations(account=account, cluster=cluster, default_qos=default_qos, format=format, id=id, only_defaults=only_defaults, parent_account=parent_account, partition=partition, qos=qos, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, with_raw_qos=with_raw_qos, with_sub_accts=with_sub_accts, without_parent_info=without_parent_info, without_parent_limits=without_parent_limits)
         print("The response of SlurmdbApi->get_associations:\n")
         pprint(api_response)
     except Exception as e:
@@ -1200,7 +1200,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1257,7 +1257,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     cluster_name = 'cluster_name_example' # str | Cluster name
@@ -1274,7 +1274,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get cluster info
-        api_response = await api_instance.get_cluster(cluster_name, classification=classification, cluster=cluster, federation=federation, flags=flags, format=format, rpc_version=rpc_version, usage_end=usage_end, usage_start=usage_start, with_deleted=with_deleted, with_usage=with_usage)
+        api_response = api_instance.get_cluster(cluster_name, classification=classification, cluster=cluster, federation=federation, flags=flags, format=format, rpc_version=rpc_version, usage_end=usage_end, usage_start=usage_start, with_deleted=with_deleted, with_usage=with_usage)
         print("The response of SlurmdbApi->get_cluster:\n")
         pprint(api_response)
     except Exception as e:
@@ -1311,7 +1311,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1368,14 +1368,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     update_time = 'update_time_example' # str | Filter reservations since update timestamp (optional)
 
     try:
         # Get cluster list
-        api_response = await api_instance.get_clusters(update_time=update_time)
+        api_response = api_instance.get_clusters(update_time=update_time)
         print("The response of SlurmdbApi->get_clusters:\n")
         pprint(api_response)
     except Exception as e:
@@ -1402,7 +1402,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1459,13 +1459,13 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
 
     try:
         # Dump all configuration information
-        api_response = await api_instance.get_config()
+        api_response = api_instance.get_config()
         print("The response of SlurmdbApi->get_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -1489,7 +1489,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1546,13 +1546,13 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
 
     try:
         # Get slurmdb diagnostics
-        api_response = await api_instance.get_diag()
+        api_response = api_instance.get_diag()
         print("The response of SlurmdbApi->get_diag:\n")
         pprint(api_response)
     except Exception as e:
@@ -1576,7 +1576,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1633,7 +1633,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     cluster = 'cluster_example' # str | CSV clusters list (optional)
@@ -1647,7 +1647,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get instance info
-        api_response = await api_instance.get_instance(cluster=cluster, extra=extra, format=format, instance_id=instance_id, instance_type=instance_type, node_list=node_list, time_end=time_end, time_start=time_start)
+        api_response = api_instance.get_instance(cluster=cluster, extra=extra, format=format, instance_id=instance_id, instance_type=instance_type, node_list=node_list, time_end=time_end, time_start=time_start)
         print("The response of SlurmdbApi->get_instance:\n")
         pprint(api_response)
     except Exception as e:
@@ -1681,7 +1681,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1738,7 +1738,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     cluster = 'cluster_example' # str | CSV clusters list (optional)
@@ -1752,7 +1752,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get instance list
-        api_response = await api_instance.get_instances(cluster=cluster, extra=extra, format=format, instance_id=instance_id, instance_type=instance_type, node_list=node_list, time_end=time_end, time_start=time_start)
+        api_response = api_instance.get_instances(cluster=cluster, extra=extra, format=format, instance_id=instance_id, instance_type=instance_type, node_list=node_list, time_end=time_end, time_start=time_start)
         print("The response of SlurmdbApi->get_instances:\n")
         pprint(api_response)
     except Exception as e:
@@ -1786,7 +1786,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1845,14 +1845,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     job_id = 'job_id_example' # str | Job id
 
     try:
         # Get job info
-        api_response = await api_instance.get_job(job_id)
+        api_response = api_instance.get_job(job_id)
         print("The response of SlurmdbApi->get_job:\n")
         pprint(api_response)
     except Exception as e:
@@ -1879,7 +1879,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -1936,7 +1936,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     account = 'account_example' # str | CSV account list (optional)
@@ -1983,7 +1983,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get job list
-        api_response = await api_instance.get_jobs(account=account, association=association, cluster=cluster, constraints=constraints, cpus_max=cpus_max, cpus_min=cpus_min, scheduler_unset=scheduler_unset, scheduled_on_submit=scheduled_on_submit, scheduled_by_main=scheduled_by_main, scheduled_by_backfill=scheduled_by_backfill, job_started=job_started, exit_code=exit_code, show_duplicates=show_duplicates, skip_steps=skip_steps, disable_truncate_usage_time=disable_truncate_usage_time, whole_hetjob=whole_hetjob, disable_whole_hetjob=disable_whole_hetjob, disable_wait_for_result=disable_wait_for_result, usage_time_as_submit_time=usage_time_as_submit_time, show_batch_script=show_batch_script, show_job_environment=show_job_environment, format=format, groups=groups, job_name=job_name, nodes_max=nodes_max, nodes_min=nodes_min, partition=partition, qos=qos, reason=reason, reservation=reservation, reservation_id=reservation_id, state=state, step=step, timelimit_max=timelimit_max, timelimit_min=timelimit_min, end_time=end_time, start_time=start_time, submit_time=submit_time, node=node, users=users, wckey=wckey)
+        api_response = api_instance.get_jobs(account=account, association=association, cluster=cluster, constraints=constraints, cpus_max=cpus_max, cpus_min=cpus_min, scheduler_unset=scheduler_unset, scheduled_on_submit=scheduled_on_submit, scheduled_by_main=scheduled_by_main, scheduled_by_backfill=scheduled_by_backfill, job_started=job_started, exit_code=exit_code, show_duplicates=show_duplicates, skip_steps=skip_steps, disable_truncate_usage_time=disable_truncate_usage_time, whole_hetjob=whole_hetjob, disable_whole_hetjob=disable_whole_hetjob, disable_wait_for_result=disable_wait_for_result, usage_time_as_submit_time=usage_time_as_submit_time, show_batch_script=show_batch_script, show_job_environment=show_job_environment, format=format, groups=groups, job_name=job_name, nodes_max=nodes_max, nodes_min=nodes_min, partition=partition, qos=qos, reason=reason, reservation=reservation, reservation_id=reservation_id, state=state, step=step, timelimit_max=timelimit_max, timelimit_min=timelimit_min, end_time=end_time, start_time=start_time, submit_time=submit_time, node=node, users=users, wckey=wckey)
         print("The response of SlurmdbApi->get_jobs:\n")
         pprint(api_response)
     except Exception as e:
@@ -2050,7 +2050,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2107,7 +2107,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     description = 'description_example' # str | CSV description list (optional)
@@ -2119,7 +2119,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get QOS list
-        api_response = await api_instance.get_qos(description=description, id=id, format=format, name=name, preempt_mode=preempt_mode, with_deleted=with_deleted)
+        api_response = api_instance.get_qos(description=description, id=id, format=format, name=name, preempt_mode=preempt_mode, with_deleted=with_deleted)
         print("The response of SlurmdbApi->get_qos:\n")
         pprint(api_response)
     except Exception as e:
@@ -2151,7 +2151,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2208,7 +2208,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     qos = 'qos_example' # str | QOS name
@@ -2216,7 +2216,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get QOS info
-        api_response = await api_instance.get_single_qos(qos, with_deleted=with_deleted)
+        api_response = api_instance.get_single_qos(qos, with_deleted=with_deleted)
         print("The response of SlurmdbApi->get_single_qos:\n")
         pprint(api_response)
     except Exception as e:
@@ -2244,7 +2244,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2301,13 +2301,13 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
 
     try:
         # Get TRES info
-        api_response = await api_instance.get_tres()
+        api_response = api_instance.get_tres()
         print("The response of SlurmdbApi->get_tres:\n")
         pprint(api_response)
     except Exception as e:
@@ -2331,7 +2331,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2388,7 +2388,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     name = 'name_example' # str | User name
@@ -2399,7 +2399,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get user info
-        api_response = await api_instance.get_user(name, with_deleted=with_deleted, with_assocs=with_assocs, with_coords=with_coords, with_wckeys=with_wckeys)
+        api_response = api_instance.get_user(name, with_deleted=with_deleted, with_assocs=with_assocs, with_coords=with_coords, with_wckeys=with_wckeys)
         print("The response of SlurmdbApi->get_user:\n")
         pprint(api_response)
     except Exception as e:
@@ -2430,7 +2430,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2487,7 +2487,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     admin_level = 'admin_level_example' # str | Administrator level (optional)
@@ -2501,7 +2501,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get user list
-        api_response = await api_instance.get_users(admin_level=admin_level, default_account=default_account, default_wckey=default_wckey, with_assocs=with_assocs, with_coords=with_coords, with_deleted=with_deleted, with_wckeys=with_wckeys, without_defaults=without_defaults)
+        api_response = api_instance.get_users(admin_level=admin_level, default_account=default_account, default_wckey=default_wckey, with_assocs=with_assocs, with_coords=with_coords, with_deleted=with_deleted, with_wckeys=with_wckeys, without_defaults=without_defaults)
         print("The response of SlurmdbApi->get_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -2535,7 +2535,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2592,14 +2592,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     id = 'id_example' # str | wckey id
 
     try:
         # Get wckey info
-        api_response = await api_instance.get_wckey(id)
+        api_response = api_instance.get_wckey(id)
         print("The response of SlurmdbApi->get_wckey:\n")
         pprint(api_response)
     except Exception as e:
@@ -2626,7 +2626,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2683,7 +2683,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     cluster = 'cluster_example' # str | CSV cluster name list (optional)
@@ -2699,7 +2699,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get wckey list
-        api_response = await api_instance.get_wckeys(cluster=cluster, format=format, id=id, name=name, only_defaults=only_defaults, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted)
+        api_response = api_instance.get_wckeys(cluster=cluster, format=format, id=id, name=name, only_defaults=only_defaults, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted)
         print("The response of SlurmdbApi->get_wckeys:\n")
         pprint(api_response)
     except Exception as e:
@@ -2735,7 +2735,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/yaml, application/json
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2793,14 +2793,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     open_api_accounts_resp = slurpy.v0040.OpenAPIAccountsResp() # OpenAPIAccountsResp | Description of accounts to update/create (optional)
 
     try:
         # Add/update list of accounts
-        api_response = await api_instance.post_accounts(open_api_accounts_resp=open_api_accounts_resp)
+        api_response = api_instance.post_accounts(open_api_accounts_resp=open_api_accounts_resp)
         print("The response of SlurmdbApi->post_accounts:\n")
         pprint(api_response)
     except Exception as e:
@@ -2826,8 +2826,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2885,14 +2885,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     open_api_accounts_add_cond_resp = slurpy.v0040.OpenAPIAccountsAddCondResp() # OpenAPIAccountsAddCondResp | Add list of accounts with conditional association (optional)
 
     try:
         # Add accounts with conditional association
-        api_response = await api_instance.post_accounts_association(open_api_accounts_add_cond_resp=open_api_accounts_add_cond_resp)
+        api_response = api_instance.post_accounts_association(open_api_accounts_add_cond_resp=open_api_accounts_add_cond_resp)
         print("The response of SlurmdbApi->post_accounts_association:\n")
         pprint(api_response)
     except Exception as e:
@@ -2918,8 +2918,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -2977,14 +2977,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     open_api_assocs_resp = slurpy.v0040.OpenAPIAssocsResp() # OpenAPIAssocsResp | Job description (optional)
 
     try:
         # Set associations info
-        api_response = await api_instance.post_associations(open_api_assocs_resp=open_api_assocs_resp)
+        api_response = api_instance.post_associations(open_api_assocs_resp=open_api_assocs_resp)
         print("The response of SlurmdbApi->post_associations:\n")
         pprint(api_response)
     except Exception as e:
@@ -3010,8 +3010,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -3069,7 +3069,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     update_time = 'update_time_example' # str | Filter reservations since update timestamp (optional)
@@ -3077,7 +3077,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Get cluster list
-        api_response = await api_instance.post_clusters(update_time=update_time, open_api_clusters_resp=open_api_clusters_resp)
+        api_response = api_instance.post_clusters(update_time=update_time, open_api_clusters_resp=open_api_clusters_resp)
         print("The response of SlurmdbApi->post_clusters:\n")
         pprint(api_response)
     except Exception as e:
@@ -3104,8 +3104,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -3163,14 +3163,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     open_api_slurmdbd_config_resp = slurpy.v0040.OpenAPISlurmdbdConfigResp() # OpenAPISlurmdbdConfigResp | Add or update config (optional)
 
     try:
         # Load all configuration information
-        api_response = await api_instance.post_config(open_api_slurmdbd_config_resp=open_api_slurmdbd_config_resp)
+        api_response = api_instance.post_config(open_api_slurmdbd_config_resp=open_api_slurmdbd_config_resp)
         print("The response of SlurmdbApi->post_config:\n")
         pprint(api_response)
     except Exception as e:
@@ -3196,8 +3196,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -3255,7 +3255,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     description = 'description_example' # str | CSV description list (optional)
@@ -3268,7 +3268,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Add or update QOSs
-        api_response = await api_instance.post_qos(description=description, id=id, format=format, name=name, preempt_mode=preempt_mode, with_deleted=with_deleted, open_api_slurmdbd_qos_resp=open_api_slurmdbd_qos_resp)
+        api_response = api_instance.post_qos(description=description, id=id, format=format, name=name, preempt_mode=preempt_mode, with_deleted=with_deleted, open_api_slurmdbd_qos_resp=open_api_slurmdbd_qos_resp)
         print("The response of SlurmdbApi->post_qos:\n")
         pprint(api_response)
     except Exception as e:
@@ -3300,8 +3300,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -3359,14 +3359,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     open_api_tres_resp = slurpy.v0040.OpenAPITresResp() # OpenAPITresResp | TRES descriptions. Only works in developer mode. (optional)
 
     try:
         # Add TRES
-        api_response = await api_instance.post_tres(open_api_tres_resp=open_api_tres_resp)
+        api_response = api_instance.post_tres(open_api_tres_resp=open_api_tres_resp)
         print("The response of SlurmdbApi->post_tres:\n")
         pprint(api_response)
     except Exception as e:
@@ -3392,8 +3392,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -3451,14 +3451,14 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     open_api_users_resp = slurpy.v0040.OpenAPIUsersResp() # OpenAPIUsersResp | add or update user (optional)
 
     try:
         # Update users
-        api_response = await api_instance.post_users(open_api_users_resp=open_api_users_resp)
+        api_response = api_instance.post_users(open_api_users_resp=open_api_users_resp)
         print("The response of SlurmdbApi->post_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -3484,8 +3484,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -3543,7 +3543,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     update_time = 'update_time_example' # str | Filter partitions since update timestamp (optional)
@@ -3552,7 +3552,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Add users with conditional association
-        api_response = await api_instance.post_users_association(update_time=update_time, flags=flags, open_api_users_add_cond_resp=open_api_users_add_cond_resp)
+        api_response = api_instance.post_users_association(update_time=update_time, flags=flags, open_api_users_add_cond_resp=open_api_users_add_cond_resp)
         print("The response of SlurmdbApi->post_users_association:\n")
         pprint(api_response)
     except Exception as e:
@@ -3580,8 +3580,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 
@@ -3639,7 +3639,7 @@ configuration.api_key['token'] = os.environ["API_KEY"]
 # configuration.api_key_prefix['token'] = 'Bearer'
 
 # Enter a context with an instance of the API client
-async with slurpy.v0040.ApiClient(configuration) as api_client:
+with slurpy.v0040.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = slurpy.v0040.SlurmdbApi(api_client)
     cluster = 'cluster_example' # str | CSV cluster name list (optional)
@@ -3656,7 +3656,7 @@ async with slurpy.v0040.ApiClient(configuration) as api_client:
 
     try:
         # Add or update wckeys
-        api_response = await api_instance.post_wckeys(cluster=cluster, format=format, id=id, name=name, only_defaults=only_defaults, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, open_api_wckey_resp=open_api_wckey_resp)
+        api_response = api_instance.post_wckeys(cluster=cluster, format=format, id=id, name=name, only_defaults=only_defaults, usage_end=usage_end, usage_start=usage_start, user=user, with_usage=with_usage, with_deleted=with_deleted, open_api_wckey_resp=open_api_wckey_resp)
         print("The response of SlurmdbApi->post_wckeys:\n")
         pprint(api_response)
     except Exception as e:
@@ -3692,8 +3692,8 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/yaml, application/json
- - **Accept**: application/yaml, application/json
+ - **Content-Type**: application/json, application/yaml
+ - **Accept**: application/json, application/yaml
 
 ### HTTP response details
 

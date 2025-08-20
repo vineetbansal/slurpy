@@ -35,6 +35,10 @@ from slurpy.v0041.models.v0041_job_desc_msg_distribution_plane_size import (
 from slurpy.v0041.models.v0041_job_desc_msg_kill_warning_delay import (
     V0041JobDescMsgKillWarningDelay,
 )
+from slurpy.v0041.models.v0041_job_desc_msg_memory_per_cpu import (
+    V0041JobDescMsgMemoryPerCpu,
+)
+from slurpy.v0041.models.v0041_job_desc_msg_priority import V0041JobDescMsgPriority
 from slurpy.v0041.models.v0041_job_desc_msg_required_switches import (
     V0041JobDescMsgRequiredSwitches,
 )
@@ -42,17 +46,9 @@ from slurpy.v0041.models.v0041_job_desc_msg_rlimits import V0041JobDescMsgRlimit
 from slurpy.v0041.models.v0041_job_desc_msg_segment_size import (
     V0041JobDescMsgSegmentSize,
 )
-from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_time_minimum import (
-    V0041OpenapiJobInfoRespJobsInnerTimeMinimum,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_priority import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerPriority,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_required_memory_per_cpu import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu,
-)
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_time_limit import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit,
+from slurpy.v0041.models.v0041_job_desc_msg_time_limit import V0041JobDescMsgTimeLimit
+from slurpy.v0041.models.v0041_job_desc_msg_time_minimum import (
+    V0041JobDescMsgTimeMinimum,
 )
 from typing import Set
 from typing_extensions import Self
@@ -226,7 +222,7 @@ class JobDescMsg(BaseModel):
     hold: Optional[StrictBool] = Field(
         default=None, description="Hold (true) or release (false) job"
     )
-    priority: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerPriority] = None
+    priority: Optional[V0041JobDescMsgPriority] = None
     profile: Optional[List[StrictStr]] = Field(
         default=None, description="Profile used by the acct_gather_profile plugin"
     )
@@ -267,8 +263,8 @@ class JobDescMsg(BaseModel):
         description="Environment variables for job prolog/epilog scripts as set by SPANK plugins",
     )
     distribution: Optional[StrictStr] = Field(default=None, description="Layout")
-    time_limit: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit] = None
-    time_minimum: Optional[V0041OpenapiJobInfoRespJobsInnerTimeMinimum] = None
+    time_limit: Optional[V0041JobDescMsgTimeLimit] = None
+    time_minimum: Optional[V0041JobDescMsgTimeMinimum] = None
     tres_bind: Optional[StrictStr] = Field(
         default=None, description="Task to TRES binding directives"
     )
@@ -357,12 +353,8 @@ class JobDescMsg(BaseModel):
     minimum_cpus_per_node: Optional[StrictInt] = Field(
         default=None, description="Minimum number of CPUs per node"
     )
-    memory_per_cpu: Optional[
-        V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu
-    ] = None
-    memory_per_node: Optional[
-        V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu
-    ] = None
+    memory_per_cpu: Optional[V0041JobDescMsgMemoryPerCpu] = None
+    memory_per_node: Optional[V0041JobDescMsgMemoryPerCpu] = None
     temporary_disk_per_node: Optional[StrictInt] = Field(
         default=None, description="Minimum tmp disk space required per node"
     )
@@ -882,9 +874,7 @@ class JobDescMsg(BaseModel):
                 "power_flags": obj.get("power_flags"),
                 "prefer": obj.get("prefer"),
                 "hold": obj.get("hold"),
-                "priority": V0041OpenapiSlurmdbdJobsRespJobsInnerPriority.from_dict(
-                    obj["priority"]
-                )
+                "priority": V0041JobDescMsgPriority.from_dict(obj["priority"])
                 if obj.get("priority") is not None
                 else None,
                 "profile": obj.get("profile"),
@@ -901,12 +891,10 @@ class JobDescMsg(BaseModel):
                 "site_factor": obj.get("site_factor"),
                 "spank_environment": obj.get("spank_environment"),
                 "distribution": obj.get("distribution"),
-                "time_limit": V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit.from_dict(
-                    obj["time_limit"]
-                )
+                "time_limit": V0041JobDescMsgTimeLimit.from_dict(obj["time_limit"])
                 if obj.get("time_limit") is not None
                 else None,
-                "time_minimum": V0041OpenapiJobInfoRespJobsInnerTimeMinimum.from_dict(
+                "time_minimum": V0041JobDescMsgTimeMinimum.from_dict(
                     obj["time_minimum"]
                 )
                 if obj.get("time_minimum") is not None
@@ -943,12 +931,12 @@ class JobDescMsg(BaseModel):
                 "tasks_per_board": obj.get("tasks_per_board"),
                 "ntasks_per_tres": obj.get("ntasks_per_tres"),
                 "minimum_cpus_per_node": obj.get("minimum_cpus_per_node"),
-                "memory_per_cpu": V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu.from_dict(
+                "memory_per_cpu": V0041JobDescMsgMemoryPerCpu.from_dict(
                     obj["memory_per_cpu"]
                 )
                 if obj.get("memory_per_cpu") is not None
                 else None,
-                "memory_per_node": V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu.from_dict(
+                "memory_per_node": V0041JobDescMsgMemoryPerCpu.from_dict(
                     obj["memory_per_node"]
                 )
                 if obj.get("memory_per_node") is not None

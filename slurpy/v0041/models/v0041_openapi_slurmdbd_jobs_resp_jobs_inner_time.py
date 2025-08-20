@@ -19,9 +19,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_time_limit import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit,
-)
+from slurpy.v0041.models.v0041_job_desc_msg_time_limit import V0041JobDescMsgTimeLimit
 from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_time_planned import (
     V0041OpenapiSlurmdbdJobsRespJobsInnerTimePlanned,
 )
@@ -64,7 +62,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerTime(BaseModel):
         default=None, description="Total time in suspended state in seconds"
     )
     system: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerTimeSystem] = None
-    limit: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit] = None
+    limit: Optional[V0041JobDescMsgTimeLimit] = None
     total: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerTimeTotal] = None
     user: Optional[V0041OpenapiSlurmdbdJobsRespJobsInnerTimeUser] = None
     __properties: ClassVar[List[str]] = [
@@ -162,9 +160,7 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerTime(BaseModel):
                 )
                 if obj.get("system") is not None
                 else None,
-                "limit": V0041OpenapiSlurmdbdJobsRespJobsInnerTimeLimit.from_dict(
-                    obj["limit"]
-                )
+                "limit": V0041JobDescMsgTimeLimit.from_dict(obj["limit"])
                 if obj.get("limit") is not None
                 else None,
                 "total": V0041OpenapiSlurmdbdJobsRespJobsInnerTimeTotal.from_dict(

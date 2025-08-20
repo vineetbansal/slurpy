@@ -19,11 +19,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_required_memory_per_cpu import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu,
+from slurpy.v0041.models.v0041_job_desc_msg_memory_per_cpu import (
+    V0041JobDescMsgMemoryPerCpu,
 )
-from slurpy.v0041.models.v0041_openapi_slurmdbd_jobs_resp_jobs_inner_required_memory_per_node import (
-    V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerNode,
+from slurpy.v0041.models.v0041_openapi_job_info_resp_jobs_inner_memory_per_node import (
+    V0041OpenapiJobInfoRespJobsInnerMemoryPerNode,
 )
 from typing import Set
 from typing_extensions import Self
@@ -37,12 +37,8 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerRequired(BaseModel):
     cpus: Optional[StrictInt] = Field(
         default=None, description="Minimum number of CPUs required", alias="CPUs"
     )
-    memory_per_cpu: Optional[
-        V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu
-    ] = None
-    memory_per_node: Optional[
-        V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerNode
-    ] = None
+    memory_per_cpu: Optional[V0041JobDescMsgMemoryPerCpu] = None
+    memory_per_node: Optional[V0041OpenapiJobInfoRespJobsInnerMemoryPerNode] = None
     __properties: ClassVar[List[str]] = ["CPUs", "memory_per_cpu", "memory_per_node"]
 
     model_config = ConfigDict(
@@ -102,12 +98,12 @@ class V0041OpenapiSlurmdbdJobsRespJobsInnerRequired(BaseModel):
         _obj = cls.model_validate(
             {
                 "CPUs": obj.get("CPUs"),
-                "memory_per_cpu": V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerCpu.from_dict(
+                "memory_per_cpu": V0041JobDescMsgMemoryPerCpu.from_dict(
                     obj["memory_per_cpu"]
                 )
                 if obj.get("memory_per_cpu") is not None
                 else None,
-                "memory_per_node": V0041OpenapiSlurmdbdJobsRespJobsInnerRequiredMemoryPerNode.from_dict(
+                "memory_per_node": V0041OpenapiJobInfoRespJobsInnerMemoryPerNode.from_dict(
                     obj["memory_per_node"]
                 )
                 if obj.get("memory_per_node") is not None

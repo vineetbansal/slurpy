@@ -398,13 +398,19 @@ class SlurmClientGenerator:
             self.logger.debug(f"First few mappings: {mappings[:3]}")
         return ",".join(mappings) if mappings else ""
 
-    def generate_client_command(self, version: str, operations: List[str]) -> List[str]:
+    def generate_client_command(
+        self, as_async: bool, version: str, operations: List[str]
+    ) -> List[str]:
         """Generate the openapi-generator-cli command for a specific version."""
         if not operations:
             self.logger.warning(f"No operations found for {version}, skipping...")
             return []
 
-        package_name = f"slurpy.{version}"
+        if as_async:
+            package_name = f"slurpy.{version}.asyncio"
+        else:
+            package_name = f"slurpy.{version}"
+
         version_output_dir = self.output_dir
 
         # Create filtered spec with only operations and models for this version
@@ -435,13 +441,14 @@ class SlurmClientGenerator:
             "python",
             "-o",
             str(version_output_dir),
-            "--library",
-            "asyncio",
             "--global-property",
             "modelDocs=false,modelTests=false",
             "--additional-properties",
             f"packageName={package_name},generateSourceCodeOnly=true",
         ]
+
+        if as_async:
+            command.extend(["--library", "asyncio"])
 
         # Add operation ID mappings if any exist
         if operation_mappings:
@@ -458,9 +465,11 @@ class SlurmClientGenerator:
 
         return command
 
-    def execute_generation(self, version: str, operations: List[str]) -> bool:
+    def execute_generation(
+        self, as_async: bool, version: str, operations: List[str]
+    ) -> bool:
         """Execute the client generation for a specific version."""
-        command = self.generate_client_command(version, operations)
+        command = self.generate_client_command(as_async, version, operations)
         if not command:
             return False
 
@@ -479,11 +488,13 @@ class SlurmClientGenerator:
 
             if result.returncode == 0:
                 self.logger.info(
-                    f"✓ Successfully generated {version} client in {version_output_dir}/"
+                    f"✓ Successfully generated {version} {'async' if as_async else 'sync'} client in {version_output_dir}/"
                 )
                 return True
             else:
-                self.logger.error(f"✗ Failed to generate {version} client:")
+                self.logger.error(
+                    f"✗ Failed to generate {version} {'async' if as_async else 'sync'} client:"
+                )
                 self.logger.error(f"stdout: {result.stdout}")
                 self.logger.error(f"stderr: {result.stderr}")
                 return False
@@ -501,10 +512,16 @@ class SlurmClientGenerator:
             self.analyze_operations()
 
         success_count = 0
-        total_versions = len(self.version_operations)
+        total_versions = len(self.version_operations) * 2
 
+        # Async client
         for version, operations in self.version_operations.items():
-            if self.execute_generation(version, operations):
+            if self.execute_generation(True, version, operations):
+                success_count += 1
+
+        # Sync client
+        for version, operations in self.version_operations.items():
+            if self.execute_generation(False, version, operations):
                 success_count += 1
 
         self.logger.info("📊 Generation Summary:")

@@ -19,14 +19,14 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
-from slurpy.v0041.models.v0041_openapi_accounts_add_cond_resp_association_condition_association_grptres_inner import (
-    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner,
-)
 from slurpy.v0041.models.v0041_openapi_clusters_resp_clusters_inner_associations import (
     V0041OpenapiClustersRespClustersInnerAssociations,
 )
 from slurpy.v0041.models.v0041_openapi_clusters_resp_clusters_inner_controller import (
     V0041OpenapiClustersRespClustersInnerController,
+)
+from slurpy.v0041.models.v0041_openapi_tres_resp_tres_inner import (
+    V0041OpenapiTresRespTRESInner,
 )
 from typing import Set
 from typing_extensions import Self
@@ -46,9 +46,9 @@ class V0041OpenapiClustersRespClustersInner(BaseModel):
     rpc_version: Optional[StrictInt] = Field(
         default=None, description="RPC version used in the cluster"
     )
-    tres: Optional[
-        List[V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner]
-    ] = Field(default=None, description="Trackable resources")
+    tres: Optional[List[V0041OpenapiTresRespTRESInner]] = Field(
+        default=None, description="Trackable resources"
+    )
     __properties: ClassVar[List[str]] = [
         "controller",
         "flags",
@@ -160,9 +160,7 @@ class V0041OpenapiClustersRespClustersInner(BaseModel):
                 else None,
                 "rpc_version": obj.get("rpc_version"),
                 "tres": [
-                    V0041OpenapiAccountsAddCondRespAssociationConditionAssociationGrptresInner.from_dict(
-                        _item
-                    )
+                    V0041OpenapiTresRespTRESInner.from_dict(_item)
                     for _item in obj["tres"]
                 ]
                 if obj.get("tres") is not None
