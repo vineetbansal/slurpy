@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ebi-slurpy"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python client for the Slurm REST API"
 authors = ["Sandy Rogers <sandyr@ebi.ac.uk>", "Aleksandar Rajkovic <aleksandar@ebi.ac.uk>"]
 readme = "README.md"
